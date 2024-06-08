@@ -5,6 +5,7 @@ vim.cmd('source ' .. vim.fn.stdpath('config') .. './more_configs.vim')
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- i don't know how to do this in lua
 vim.cmd('set autochdir')
 
 -- Install package manager
