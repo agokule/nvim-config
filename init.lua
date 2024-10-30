@@ -259,6 +259,8 @@ require('lazy').setup({
   { "CRAG666/code_runner.nvim", config = true },
 
   'mg979/vim-visual-multi',
+
+  'm4xshen/autoclose.nvim',
 }, {})
 
 -- [[ Setting options ]]
@@ -693,6 +695,8 @@ vim.keymap.set('n', '<leader>rp', ':RunProject<CR>', { noremap = true, silent = 
 vim.keymap.set('n', '<leader>rd', ':RunClose<CR>', { noremap = true, silent = false })
 vim.keymap.set('n', '<leader>crf', ':CRFiletype<CR>', { noremap = true, silent = false })
 vim.keymap.set('n', '<leader>crp', ':CRProjects<CR>', { noremap = true, silent = false })
+
+require("autoclose").setup()
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
