@@ -332,6 +332,11 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
+vim.keymap.set('n', '<Leader>yfp', ':let @+ = expand("%:p")', { desc = "Yank Full Filepath" })
+vim.keymap.set('n', '<Leader>yfr', ':let @+ = expand("%")', { desc = "Yank Relative Filepath" })
+vim.keymap.set('n', '<Leader>yfn', ':let @+ = expand("%:p")', { desc = "Yank File Name" })
+vim.keymap.set('n', '<Leader>yff', ':let @+ = expand("%:p")', { desc = "Yank File Folder" })
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
