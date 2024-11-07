@@ -690,7 +690,7 @@ require('code_runner').setup({
       "javac $fileName &&",
       "java $fileNameWithoutExt"
     },
-    python = "cd $dir && py $fileName",
+    python = "cd \"$dir\" && py \"$fileName\"",
     typescript = {
       "tsc $fileName ; ",
       "node $fileName",
@@ -701,7 +701,7 @@ require('code_runner').setup({
       "$dir/$fileNameWithoutExt"
     },
     cpp = {
-      "cd $dir &&",
+      "cd \"$dir\" &&",
       "g++ -Wall -static -std=c++17 \"$fileName\"",
       "-o \"$fileNameWithoutExt\" &&",
       "\"$fileNameWithoutExt\""
