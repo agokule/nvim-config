@@ -705,6 +705,12 @@ require('code_runner').setup({
       "g++ -Wall -static -std=c++17 \"$fileName\"",
       "-o \"$fileNameWithoutExt\" &&",
       "\"$fileNameWithoutExt\""
+    },
+    c = {
+      "cd \"$dir\" &&",
+      "gcc -Wall -static \"$fileName\"",
+      "-o \"$fileNameWithoutExt\" &&",
+      "\"$fileNameWithoutExt\""
     }
   },
 })
