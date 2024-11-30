@@ -332,6 +332,16 @@ require('lazy').setup({
       dap.set_exception_breakpoints({"raised", "uncaught"})
       dap.set_log_level('TRACE')
     end,
+  },
+  {
+      "kylechui/nvim-surround",
+      version = "*", -- Use for stability; omit to use `main` branch for the latest features
+      event = "VeryLazy",
+      config = function()
+          require("nvim-surround").setup({
+              -- Configuration here, or leave empty to use defaults
+          })
+      end
   }
 }, {})
 
@@ -814,6 +824,8 @@ require('dap.ext.vscode').load_launchjs(nil, {})
 
 require('dap').configurations.c = require('dap').configurations.cpp
 vim.fn.sign_define('DapBreakpoint', { text = '🔴' })
+
+require("nvim-surround").setup()
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
