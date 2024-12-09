@@ -779,6 +779,13 @@ require('code_runner').setup({
       "\"$fileNameWithoutExt\""
     }
   },
+  project = {
+    ['~/Desktop/C++/Enet tutorial'] = {
+      name = "Enet tutorial",
+      description = "The enet turial",
+      command = "run.bat"
+    }
+  }
 })
 
 vim.keymap.set('n', '<leader>rc', ':RunCode<CR>', { noremap = true, silent = false })
