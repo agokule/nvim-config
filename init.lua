@@ -342,8 +342,28 @@ require('lazy').setup({
               -- Configuration here, or leave empty to use defaults
           })
       end
+  },
+  {
+    "klen/nvim-config-local",
+    config = function()
+      require('config-local').setup {
+        -- Default options (optional)
+
+        -- Config file patterns to load (lua supported)
+        config_files = { ".nvim.lua", ".nvimrc", ".exrc" },
+
+        -- Where the plugin keeps files data
+        hashfile = vim.fn.stdpath("data") .. "/config-local",
+
+        autocommands_create = true, -- Create autocommands (VimEnter, DirectoryChanged)
+        commands_create = true,     -- Create commands (ConfigLocalSource, ConfigLocalEdit, ConfigLocalTrust, ConfigLocalIgnore)
+        silent = false,             -- Disable plugin messages (Config loaded/ignored)
+        lookup_parents = true,     -- Lookup config files in parent directories
+      }
+    end
   }
 }, {})
+-- End of installing packages
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
@@ -826,6 +846,16 @@ require('dap').configurations.c = require('dap').configurations.cpp
 vim.fn.sign_define('DapBreakpoint', { text = '🔴' })
 
 require("nvim-surround").setup()
+
+require("neo-tree").setup({
+  filesystem = {
+    filetered_items = {
+      hide_dotfiles = false,
+      hide_gitignored = false,
+      hide_hidden = true
+    }
+  }
+})
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
