@@ -402,6 +402,9 @@ vim.keymap.set('n', '<Leader>yfr', ':let @+ = expand("%")', { desc = "Yank Relat
 vim.keymap.set('n', '<Leader>yfn', ':let @+ = expand("%:p")', { desc = "Yank File Name" })
 vim.keymap.set('n', '<Leader>yff', ':let @+ = expand("%:p")', { desc = "Yank File Folder" })
 
+vim.keymap.set('n', '<Leader>f', ':Neotree<CR>', { desc = "Open Neotree (FileExplorer)" })
+vim.keymap.set('n', '<Leader>gt', ':Neogit<CR>', { desc = "Open Neogit" })
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
@@ -778,6 +781,10 @@ require('code_runner').setup({
       "gcc -Wall -static \"$fileName\"",
       "-o \"$fileNameWithoutExt\" &&",
       "\"$fileNameWithoutExt\""
+    },
+    dosbatch = { -- *.bat and *.cmd files
+      "cd \"$dir\" &&",
+      "cmd /C \"$fileName\""
     }
   },
 })
