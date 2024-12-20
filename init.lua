@@ -125,7 +125,7 @@ require('lazy').setup({
         { '<leader>s', group = '[S]earch' },
         { '<leader>w', group = '[W]orkspace' },
         { '<leader>t', group = '[T]oggle' },
-        { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+        { '<leader>gh', group = '[G]it [H]unk', mode = { 'n', 'v' } },
       },
     },
   },
@@ -334,7 +334,12 @@ require('lazy').setup({
       vim.keymap.set('n', '];', dropbar_api.select_next_context, { desc = 'Select next context' })
     end
   },
-  'equalsraf/neovim-gui-shim'
+  'equalsraf/neovim-gui-shim',
+  {
+      "ThePrimeagen/harpoon",
+      branch = "harpoon2",
+      dependencies = { "nvim-lua/plenary.nvim" }
+  }
 }, {})
 -- End of installing packages
 
@@ -915,6 +920,20 @@ require("lualine").setup {
         lualine_z = {'location'}
       }
 }
+
+local harpoon = require("harpoon")
+harpoon:setup()
+
+vim.keymap.set('n', 'fa', function () harpoon:list():add() end)
+vim.keymap.set('n', 'fd', function () harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+
+vim.keymap.set('n', 'fu', function () harpoon:list():select(1) end)
+vim.keymap.set('n', 'fi', function () harpoon:list():select(2) end)
+vim.keymap.set('n', 'fo', function () harpoon:list():select(3) end)
+vim.keymap.set('n', 'fp', function () harpoon:list():select(4) end)
+
+vim.keymap.set('n', 'fl', function () harpoon:list():prev() end)
+vim.keymap.set('n', 'fh', function () harpoon:list():prev() end)
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
