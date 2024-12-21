@@ -925,15 +925,35 @@ local harpoon = require("harpoon")
 harpoon:setup()
 
 vim.keymap.set('n', 'fa', function () harpoon:list():add() end)
-vim.keymap.set('n', 'fd', function () harpoon.ui:toggle_quick_menu(harpoon:list()) end)
 
-vim.keymap.set('n', 'fu', function () harpoon:list():select(1) end)
-vim.keymap.set('n', 'fi', function () harpoon:list():select(2) end)
-vim.keymap.set('n', 'fo', function () harpoon:list():select(3) end)
-vim.keymap.set('n', 'fp', function () harpoon:list():select(4) end)
+vim.keymap.set('n', 'ff', function () harpoon:list():select(1) end)
+vim.keymap.set('n', 'fj', function () harpoon:list():select(2) end)
+vim.keymap.set('n', 'fk', function () harpoon:list():select(3) end)
+vim.keymap.set('n', 'fl', function () harpoon:list():select(4) end)
+vim.keymap.set('n', 'f;', function () harpoon:list():select(5) end)
 
-vim.keymap.set('n', 'fl', function () harpoon:list():prev() end)
-vim.keymap.set('n', 'fh', function () harpoon:list():prev() end)
+vim.keymap.set('n', 'fo', function () harpoon:list():prev() end)
+vim.keymap.set('n', 'fp', function () harpoon:list():next() end)
+
+local conf = require("telescope.config").values
+local function toggle_telescope(harpoon_files)
+    local file_paths = {}
+    for _, item in ipairs(harpoon_files.items) do
+        table.insert(file_paths, item.value)
+    end
+
+    require("telescope.pickers").new({}, {
+        prompt_title = "Harpoon",
+        finder = require("telescope.finders").new_table({
+            results = file_paths,
+        }),
+        previewer = conf.file_previewer({}),
+        sorter = conf.generic_sorter({}),
+    }):find()
+end
+
+vim.keymap.set("n", "fd", function() toggle_telescope(harpoon:list()) end,
+    { desc = "Open harpoon window" })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
