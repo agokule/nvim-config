@@ -926,11 +926,15 @@ harpoon:setup()
 
 vim.keymap.set('n', 'fa', function () harpoon:list():add() end)
 
-vim.keymap.set('n', 'ff', function () harpoon:list():select(1) end)
-vim.keymap.set('n', 'fj', function () harpoon:list():select(2) end)
-vim.keymap.set('n', 'fk', function () harpoon:list():select(3) end)
-vim.keymap.set('n', 'fl', function () harpoon:list():select(4) end)
-vim.keymap.set('n', 'f;', function () harpoon:list():select(5) end)
+vim.keymap.set('n', 'fj', function () harpoon:list():select(1) end)
+vim.keymap.set('n', 'fk', function () harpoon:list():select(2) end)
+vim.keymap.set('n', 'fl', function () harpoon:list():select(3) end)
+vim.keymap.set('n', 'f;', function () harpoon:list():select(4) end)
+
+vim.keymap.set('n', 'fJ', function () harpoon:list():select(5) end)
+vim.keymap.set('n', 'fK', function () harpoon:list():select(6) end)
+vim.keymap.set('n', 'fL', function () harpoon:list():select(7) end)
+vim.keymap.set('n', 'f:', function () harpoon:list():select(8) end)
 
 vim.keymap.set('n', 'fo', function () harpoon:list():prev() end)
 vim.keymap.set('n', 'fp', function () harpoon:list():next() end)
