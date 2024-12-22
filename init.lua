@@ -976,20 +976,20 @@ require("lualine").setup {
 local harpoon = require("harpoon")
 harpoon:setup()
 
-vim.keymap.set('n', 'fa', function () harpoon:list():add() end)
+vim.keymap.set('n', 'fa', function () harpoon:list():add() end, { desc = 'Add file to harpoon' })
 
-vim.keymap.set('n', 'fj', function () harpoon:list():select(1) end)
-vim.keymap.set('n', 'fk', function () harpoon:list():select(2) end)
-vim.keymap.set('n', 'fl', function () harpoon:list():select(3) end)
-vim.keymap.set('n', 'f;', function () harpoon:list():select(4) end)
+vim.keymap.set('n', 'fj', function () harpoon:list():select(1) end, { desc = 'Select harpoon file 1' })
+vim.keymap.set('n', 'fk', function () harpoon:list():select(2) end, { desc = 'Select harpoon file 2' })
+vim.keymap.set('n', 'fl', function () harpoon:list():select(3) end, { desc = 'Select harpoon file 3' })
+vim.keymap.set('n', 'f;', function () harpoon:list():select(4) end, { desc = 'Select harpoon file 4' })
 
-vim.keymap.set('n', 'fJ', function () harpoon:list():select(5) end)
-vim.keymap.set('n', 'fK', function () harpoon:list():select(6) end)
-vim.keymap.set('n', 'fL', function () harpoon:list():select(7) end)
-vim.keymap.set('n', 'f:', function () harpoon:list():select(8) end)
+vim.keymap.set('n', 'fJ', function () harpoon:list():select(5) end, { desc = 'Select harpoon file 5' })
+vim.keymap.set('n', 'fK', function () harpoon:list():select(6) end, { desc = 'Select harpoon file 6' })
+vim.keymap.set('n', 'fL', function () harpoon:list():select(7) end, { desc = 'Select harpoon file 7' })
+vim.keymap.set('n', 'f:', function () harpoon:list():select(8) end, { desc = 'Select harpoon file 8' })
 
-vim.keymap.set('n', 'fo', function () harpoon:list():prev() end)
-vim.keymap.set('n', 'fp', function () harpoon:list():next() end)
+vim.keymap.set('n', 'fo', function () harpoon:list():prev() end, { desc = 'Go to previous harpoon file' })
+vim.keymap.set('n', 'fp', function () harpoon:list():next() end, { desc = 'Go to next harpoon file' })
 
 local conf = require("telescope.config").values
 local function toggle_telescope(harpoon_files)
