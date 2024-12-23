@@ -348,6 +348,17 @@ require('lazy').setup({
           "hrsh7th/nvim-cmp",
       },
   },
+  {
+    'rmagatti/auto-session',
+    lazy = false,
+
+    ---enables autocomplete for opts
+    ---@module "auto-session"
+    ---@type AutoSession.Config
+    opts = {
+      use_git_branch = true,
+    }
+  },
 }, {})
 -- End of installing packages
 
@@ -710,6 +721,7 @@ cmp.setup {
 require("codeium").setup({
     -- Optionally disable cmp source if using virtual text only
     enable_cmp_source = true,
+    enable_chat = true,
     virtual_text = {
         enabled = true,
 
