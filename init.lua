@@ -989,6 +989,7 @@ local harpoon = require("harpoon")
 harpoon:setup()
 
 vim.keymap.set('n', 'fa', function () harpoon:list():add() end, { desc = 'Add file to harpoon' })
+vim.keymap.set('n', 'fs', function () harpoon:list():remove() end, { desc = 'Remove file from harpoon' })
 
 vim.keymap.set('n', 'fj', function () harpoon:list():select(1) end, { desc = 'Select harpoon file 1' })
 vim.keymap.set('n', 'fk', function () harpoon:list():select(2) end, { desc = 'Select harpoon file 2' })
