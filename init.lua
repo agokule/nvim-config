@@ -105,15 +105,6 @@ require('lazy').setup({
   },
 
   {
-    -- Add indentation guides even on blank lines
-    'lukas-reineke/indent-blankline.nvim',
-    -- Enable `lukas-reineke/indent-blankline.nvim`
-    -- See `:help ibl`
-    main = 'ibl',
-    opts = {},
-  },
-
-  {
     "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
@@ -345,6 +336,7 @@ require('lazy').setup({
       scroll = { enabled = true },
       statuscolumn = { enabled = true },
       words = { enabled = true },
+      -- scope = { enabled = true },
       styles = {
         notification = {
           border = "rounded",
@@ -1032,24 +1024,24 @@ local function get_wakatime()
 end
 
 require("lualine").setup {
-      options = {
-        icons_enabled = true,
-        theme = 'onedark',
-        component_separators = '',
-        section_separators = '',
-      },
-      sections = {
-        lualine_a = {'mode'},
-        lualine_b = {'branch', 'diff', 'diagnostics'},
-        lualine_c = {'filename'},
-        lualine_x = {
-          'encoding',
-          'fileformat',
-          'filetype'
-        },
-        lualine_y = {'progress', get_wakatime},
-        lualine_z = {'location'}
-      }
+  options = {
+    icons_enabled = true,
+    theme = 'onedark',
+    component_separators = '',
+    section_separators = '',
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_c = {'filename'},
+    lualine_x = {
+      'encoding',
+      'fileformat',
+      'filetype'
+    },
+    lualine_y = {'progress', get_wakatime},
+    lualine_z = {'location'}
+  }
 }
 
 local harpoon = require("harpoon")
