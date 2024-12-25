@@ -82,39 +82,7 @@ require('lazy').setup({
     opts = {
       icons = {
         -- set icon mappings to true if you have a Nerd Font
-        mappings = vim.g.have_nerd_font,
-        -- If you are using a Nerd Font: set icons.keys to an empty table which will use the
-        -- default whick-key.nvim defined Nerd Font icons, otherwise define a string table
-        keys = vim.g.have_nerd_font and {} or {
-          Up = '<Up> ',
-          Down = '<Down> ',
-          Left = '<Left> ',
-          Right = '<Right> ',
-          C = '<C-…> ',
-          M = '<M-…> ',
-          D = '<D-…> ',
-          S = '<S-…> ',
-          CR = '<CR> ',
-          Esc = '<Esc> ',
-          ScrollWheelDown = '<ScrollWheelDown> ',
-          ScrollWheelUp = '<ScrollWheelUp> ',
-          NL = '<NL> ',
-          BS = '<BS> ',
-          Space = '<Space> ',
-          Tab = '<Tab> ',
-          F1 = '<F1>',
-          F2 = '<F2>',
-          F3 = '<F3>',
-          F4 = '<F4>',
-          F5 = '<F5>',
-          F6 = '<F6>',
-          F7 = '<F7>',
-          F8 = '<F8>',
-          F9 = '<F9>',
-          F10 = '<F10>',
-          F11 = '<F11>',
-          F12 = '<F12>',
-        },
+        mappings = true,
       },
 
       -- Document existing key chains
@@ -379,7 +347,16 @@ require('lazy').setup({
       words = { enabled = true },
       styles = {
         notification = {
-          -- wo = { wrap = true } -- Wrap notifications
+          border = "rounded",
+          zindex = 100,
+          ft = "markdown",
+          wo = {
+            winblend = 5,
+            wrap = false,
+            conceallevel = 2,
+            colorcolumn = "",
+          },
+          bo = { filetype = "snacks_notif" },
         }
       }
     },
@@ -616,10 +593,10 @@ vim.defer_fn(function()
       swap = {
         enable = true,
         swap_next = {
-          ['<leader>a'] = '@parameter.inner',
+          ['<leader>sn'] = '@parameter.inner',
         },
         swap_previous = {
-          ['<leader>A'] = '@parameter.inner',
+          ['<leader>sp'] = '@parameter.inner',
         },
       },
     },
@@ -1076,7 +1053,12 @@ require("lualine").setup {
 }
 
 local harpoon = require("harpoon")
-harpoon:setup()
+harpoon:setup({
+  settings = {
+    save_on_toggle = true,
+    sync_on_ui_close = true
+  }
+})
 
 vim.keymap.set('n', 'fa', function () harpoon:list():add() end, { desc = 'Add file to harpoon' })
 vim.keymap.set('n', 'fs', function () harpoon:list():remove() end, { desc = 'Remove file from harpoon' })
