@@ -417,7 +417,8 @@ require('lazy').setup({
         end,
       })
     end,
-  }
+  },
+  { 'RaafatTurki/hex.nvim' }
 }, {})
 -- End of installing packages
 
@@ -1087,6 +1088,8 @@ end
 
 vim.keymap.set("n", "fd", function() toggle_telescope(harpoon:list()) end,
     { desc = "Open harpoon window" })
+
+require 'hex'.setup()
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
