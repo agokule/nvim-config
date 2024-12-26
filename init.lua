@@ -904,7 +904,7 @@ require('code_runner').setup({
     },
     c = {
       "cd \"$dir\" &&",
-      "gcc -Wall -static \"$fileName\"",
+      "gcc -Wall -static -std=c17 \"$fileName\"",
       "-o \"$fileNameWithoutExt\" &&",
       "\"$fileNameWithoutExt\""
     },
