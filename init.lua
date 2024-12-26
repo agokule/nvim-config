@@ -968,8 +968,38 @@ require("neo-tree").setup({
       hide_dotfiles = false,
       hide_gitignored = false,
       hide_hidden = true
+    },
+  },
+  sources = {
+    "filesystem",
+    "buffers",
+    "git_status",
+    "document_symbols",
+  },
+  source_selector = {
+    winbar = true,
+    sources = {
+      { source = "filesystem" },
+      { source = "git_status" },
+      { source = "document_symbols" },
     }
-  }
+  },
+  git_status = {
+    symbols = {
+      -- Change type
+      added     = "✚", -- NOTE: you can set any of these to an empty string to not show them
+      deleted   = "󰆴",
+      modified  = "",
+      renamed   = "󰁕",
+      -- Status type
+      untracked = "",
+      ignored   = "",
+      unstaged  = "",
+      staged    = "",
+      conflict  = "",
+    },
+    align = "right",
+  },
 })
 
 local neogit = require("neogit")
