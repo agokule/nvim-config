@@ -308,17 +308,6 @@ require('lazy').setup({
       },
   },
   {
-    'rmagatti/auto-session',
-    lazy = false,
-
-    ---enables autocomplete for opts
-    ---@module "auto-session"
-    ---@type AutoSession.Config
-    opts = {
-      use_git_branch = true,
-    }
-  },
-  {
     "folke/snacks.nvim",
     priority = 1000,
     lazy = false,
@@ -372,7 +361,7 @@ require('lazy').setup({
                   vim.fn.jobstart("gh issue list --web", { detach = true })
                 end,
                 icon = " ",
-                height = 7,
+                height = 5,
               },
               {
                 icon = " ",
@@ -382,13 +371,13 @@ require('lazy').setup({
                 action = function()
                   vim.fn.jobstart("gh pr list --web", { detach = true })
                 end,
-                height = 7,
+                height = 5,
               },
               {
                 icon = " ",
                 title = "Git Status",
                 cmd = "git --no-pager diff --stat -B -M -C",
-                height = 10,
+                height = 7,
               },
             }
             return vim.tbl_map(function(cmd)
