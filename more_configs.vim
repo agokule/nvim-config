@@ -25,22 +25,10 @@ set hlsearch
 if has('nvim')
 	autocmd TermOpen * setlocal nonumber norelativenumber
 endif
-set clipboard^=unnamed,unnamedplus
 
 au VimLeave * set guicursor=a:ver1-blinkon1
 
 let g:mapleader = ","
-
-nnoremap d "_d
-nnoremap c "_c
-nnoremap D "_D
-vnoremap d "_d
-nnoremap x "_x
-
-nnoremap <leader>d ""d
-nnoremap <leader>D ""D
-vnoremap <leader>d ""d
-nnoremap <leader>x ""x
 
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
