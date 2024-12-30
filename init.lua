@@ -511,6 +511,9 @@ require('lazy').setup({
       require('gitsigns').setup()
       vim.keymap.set('n', '<leader>gh', ':Gitsigns preview_hunk<CR>', { desc = 'Preview git hunk' })
     end
+  },
+  {
+    'github/copilot.vim'
   }
 }, {})
 -- End of installing packages
