@@ -730,7 +730,7 @@ local on_attach = function(_, bufnr)
   nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
 
   -- See `:help K` for why this keymap
-  nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
+  nmap('K', vim.lsp.with(vim.lsp.buf.hover, { border = "single" }), 'Hover Documentation')
   nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
 
   -- Lesser used LSP functionality
@@ -836,6 +836,37 @@ local luasnip = require 'luasnip'
 require('luasnip.loaders.from_vscode').lazy_load()
 luasnip.config.setup {}
 
+local cmp_menu_icons = {
+  Text = " ",
+  Method = "󰆧 ",
+  Function = "󰊕",
+  Constructor = "󰮄 ",
+  Field = "󰇽 ",
+  Variable = " ",
+  Class = "",
+  Interface = " ",
+  Module = "",
+  Property = "󰜢",
+  Unit = "󰑭 ",
+  Value = "󰎠 ",
+  Enum = " ",
+  Keyword = " ",
+  Snippet = " ",
+  Color = "󰏘 ",
+  File = "󰈙",
+  Reference = " ",
+  Folder = "󰉋 ",
+  EnumMember = " ",
+  Constant = "󰏿",
+  Struct = " ",
+  Event = "",
+  Operator = "󰆕",
+  TypeParameter = "󰅲",
+  Codeium = " "
+}
+
+local longest_menu_kind_type_len = 13 -- It is TypeParameter
+
 cmp.setup {
   snippet = {
     expand = function(args)
@@ -876,7 +907,50 @@ cmp.setup {
     { name = 'luasnip' },
     { name = 'codeium' }
   },
+  formatting = {
+    fields = {'kind', 'abbr', 'menu'},
+    format = function(entry, vim_item)
+      vim_item.menu = "   " .. vim_item.kind .. string.rep(" ", longest_menu_kind_type_len - vim_item.kind:len()) ..  ({
+        buffer = "[Buffer]",
+        nvim_lsp = "[LSP]",
+        luasnip = "[LuaSnip]",
+        codeium = "[Codeium]"
+      })[entry.source.name]
+      vim_item.kind = cmp_menu_icons[vim_item.kind]
+      return vim_item
+    end
+  },
+  matching = {
+    disallow_fuzzy_matching = false,
+    disallow_fullfuzzy_matching = false,
+  },
+  window = {
+    winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+  }
 }
+
+-- Customization for Pmenu
+vim.api.nvim_set_hl(0, "PmenuSel", { bg = "#282C34", fg = "NONE" })
+vim.api.nvim_set_hl(0, "Pmenu", { fg = "#C5CDD9", bg = "#22252A" })
+
+vim.cmd[[
+" gray
+highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080
+" blue
+highlight! CmpItemAbbrMatch guibg=NONE guifg=#569CD6
+highlight! link CmpItemAbbrMatchFuzzy CmpItemAbbrMatch
+" light blue
+highlight! CmpItemKindVariable guibg=NONE guifg=#9CDCFE
+highlight! link CmpItemKindInterface CmpItemKindVariable
+highlight! link CmpItemKindText CmpItemKindVariable
+" pink
+highlight! CmpItemKindFunction guibg=NONE guifg=#C586C0
+highlight! link CmpItemKindMethod CmpItemKindFunction
+" front
+highlight! CmpItemKindKeyword guibg=NONE guifg=#D4D4D4
+highlight! link CmpItemKindProperty CmpItemKindKeyword
+highlight! link CmpItemKindUnit CmpItemKindKeyword
+]]
 
 require("codeium").setup({
     -- Optionally disable cmp source if using virtual text only
