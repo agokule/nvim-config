@@ -573,12 +573,12 @@ vim.keymap.set('v', '<leader>Y', '"+Y')
 vim.keymap.set('n', '<leader>d', '"_d')
 vim.keymap.set('v', '<leader>d', '"_d')
 
-vim.keymap.set('n', '<Leader>yfp', ':let @+ = expand("%:p")<CR>', { desc = "Yank Full Filepath" })
-vim.keymap.set('n', '<Leader>yfr', ':let @+ = expand("%:p:.")<CR>', { desc = "Yank Relative Filepath" })
-vim.keymap.set('n', '<Leader>yfn', ':let @+ = expand("%:t")<CR>', { desc = "Yank File Name" })
-vim.keymap.set('n', '<Leader>yff', ':let @+ = expand("%:p:h")<CR>', { desc = "Yank File Folder" })
+vim.keymap.set('n', '<Leader>cfp', ':let @+ = expand("%:p")<CR>', { desc = "Yank Full Filepath" })
+vim.keymap.set('n', '<Leader>cfr', ':let @+ = expand("%:p:.")<CR>', { desc = "Yank Relative Filepath" })
+vim.keymap.set('n', '<Leader>cfn', ':let @+ = expand("%:t")<CR>', { desc = "Yank File Name" })
+vim.keymap.set('n', '<Leader>cff', ':let @+ = expand("%:p:h")<CR>', { desc = "Yank File Folder" })
 
-vim.keymap.set('n', '<Leader>f', ':Neotree<CR>', { desc = "Open Neotree (FileExplorer)" })
+vim.keymap.set('n', '<Leader>fe', ':Neotree<CR>', { desc = "Open Neotree (FileExplorer)" })
 vim.keymap.set('n', '<Leader>gt', ':Neogit<CR>', { desc = "Open Neogit" })
 
 -- [[ Highlight on yank ]]
