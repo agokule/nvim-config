@@ -85,7 +85,7 @@ require('lazy').setup({
 
   'mg979/vim-visual-multi',
 
-  'm4xshen/autoclose.nvim',
+  { 'm4xshen/autoclose.nvim', config = function() require('autoclose').setup() end },
   {
     'stevearc/dressing.nvim',
     opts = {},
@@ -94,7 +94,7 @@ require('lazy').setup({
   { 'wakatime/vim-wakatime', lazy = false },
 
   'equalsraf/neovim-gui-shim',
-  { 'RaafatTurki/hex.nvim' },
+  { 'RaafatTurki/hex.nvim', config = function() require('hex').setup() end},
   {
     'github/copilot.vim'
   }
