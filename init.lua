@@ -30,9 +30,6 @@ vim.opt.rtp:prepend(lazypath)
 --  You can also configure plugins after the setup call,
 --    as they will be available in your neovim runtime.
 require('lazy').setup({
-  -- Detect tabstop and shiftwidth automatically
-  'tpope/vim-sleuth',
-
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
   {
@@ -80,24 +77,6 @@ require('lazy').setup({
   -- require 'kickstart.plugins.autoformat',
   -- require 'kickstart.plugins.debug',
   { import = 'custom.plugins' },
-
-  'mbbill/undotree',
-
-  'mg979/vim-visual-multi',
-
-  { 'm4xshen/autoclose.nvim', config = function() require('autoclose').setup() end },
-  {
-    'stevearc/dressing.nvim',
-    opts = {},
-  },
-
-  { 'wakatime/vim-wakatime', lazy = false },
-
-  'equalsraf/neovim-gui-shim',
-  { 'RaafatTurki/hex.nvim', config = function() require('hex').setup() end},
-  {
-    'github/copilot.vim'
-  }
 }, {})
 -- End of installing packages
 
