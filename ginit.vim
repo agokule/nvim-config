@@ -1,8 +1,8 @@
-let s:fontsize = 10
-set guifont=Cascadia\ Mono:h10
+let s:fontsize = 11
+set guifont=Cascadia\ Mono:h11
 function! AdjustFontSize(amount)
   let s:fontsize = s:fontsize+a:amount
-  :execute "set guifont=Cascadia\\ Mono:h" . s:fontsize
+  :execute "GuiFont Cascadia\\ Mono:h" . s:fontsize
 endfunction
 
 noremap <C-ScrollWheelUp> :call AdjustFontSize(1)<CR>
