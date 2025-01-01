@@ -255,9 +255,6 @@ mason_lspconfig.setup_handlers {
   end,
 }
 
--- Configure undotree
-vim.keymap.set('n', '<C-Z>', vim.cmd.UndotreeToggle)
-
 -- temporary fix for https://github.com/neovim/neovim/issues/8587
 -- taken from https://github.com/neovim/neovim/issues/8587#issuecomment-2176399196
 vim.api.nvim_create_user_command("ClearShada", function()
