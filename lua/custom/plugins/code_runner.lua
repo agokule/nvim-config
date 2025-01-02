@@ -43,7 +43,5 @@ return {
         {'<leader>rt', ':RunFile tab<CR>', noremap = true, silent = false },
         {'<leader>rp', ':RunProject<CR>',  noremap = true, silent = false },
         {'<leader>rd', ':RunClose<CR>', noremap = true, silent = false },
-        {'<leader>crf', ':CRFiletype<CR>', noremap = true, silent = false },
-        {'<leader>crp', ':CRProjects<CR>', noremap = true, silent = false }
     }
 }
