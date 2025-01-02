@@ -11,7 +11,8 @@ return {
     'github/copilot.vim',
     { 'kana/vim-arpeggio', config = function ()
         vim.cmd[[
-Arpeggio imap jk <Esc> " Return to normal mode when jk is pressed
+Arpeggio map jk <Esc> " input ESC when jk is pressed
+Arpeggio cmap kj <Esc> " input ESC when kj is pressed
 ]]
     end }
 }
