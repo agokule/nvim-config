@@ -14,5 +14,13 @@ return {
 Arpeggio map jk <Esc> " input ESC when jk is pressed
 Arpeggio cmap kj <Esc> " input ESC when kj is pressed
 ]]
-    end }
+    end },
+    {
+        "catgoose/nvim-colorizer.lua",
+        event = "BufReadPre",
+        opts = { -- set to setup table
+            mode = "virtualtext",
+        },
+    },
+    'gelguy/wilder.nvim',
 }
