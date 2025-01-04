@@ -1,6 +1,9 @@
 -- [[ Configure nvim-cmp ]]
 -- See `:help cmp`
-
+function setDefault(t, d)
+    local mt = { __index = function() return d end }
+    setmetatable(t, mt)
+end
 local cmp_menu_icons = {
   Text = " ",
   Method = "󰆧 ",
@@ -29,6 +32,7 @@ local cmp_menu_icons = {
   TypeParameter = "󰅲",
   Codeium = " "
 }
+setDefault(cmp_menu_icons, " ")
 
 local longest_menu_kind_type_len = 13 -- It is TypeParameter
 

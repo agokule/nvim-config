@@ -1,7 +1,7 @@
 return {
     -- :h nvim-dap-ui
     'rcarriga/nvim-dap-ui',
-    opt = {
+    opts = {
         icons = { expanded = '▾', collapsed = '▸', current_frame = '*' },
         controls = {
             icons = {

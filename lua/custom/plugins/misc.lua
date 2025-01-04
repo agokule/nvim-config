@@ -3,24 +3,18 @@ return {
     "folke/lazydev.nvim",
     { 'mbbill/undotree', keys = { { '<C-Z>', vim.cmd.UndotreeToggle } } },
     'mg979/vim-visual-multi',
-    'm4xshen/autoclose.nvim',
-    'stevearc/dressing.nvim',
+    { 'm4xshen/autoclose.nvim', main = "autoclose", opts = {} },
+    { 'stevearc/dressing.nvim', opts = {} },
     { 'wakatime/vim-wakatime', lazy = false },
     'equalsraf/neovim-gui-shim',
     'RaafatTurki/hex.nvim',
-    'github/copilot.vim',
+    { 'github/copilot.vim', enabled = false },
     { 'kana/vim-arpeggio', config = function ()
         vim.cmd[[
-Arpeggio map jk <Esc> " input ESC when jk is pressed
+Arpeggio imap jk <Esc> " input ESC when jk is pressed
+Arpeggio vmap jk <Esc> " input ESC when jk is pressed
 Arpeggio cmap kj <Esc> " input ESC when kj is pressed
+Arpeggio omap kj <Esc> " input ESC when kj is pressed
 ]]
     end },
-    {
-        "catgoose/nvim-colorizer.lua",
-        event = "BufReadPre",
-        opts = { -- set to setup table
-            mode = "virtualtext",
-        },
-    },
-    'gelguy/wilder.nvim',
 }

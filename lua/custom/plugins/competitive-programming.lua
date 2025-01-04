@@ -3,11 +3,13 @@ return {
     dependencies = 'MunifTanjim/nui.nvim',
     config = function()
         require('competitest').setup({
-            testcases_use_single_file = true,
+            testcases_use_single_file = false,
             compile_command = {
                 c = { exec = "gcc", args = { "-Wall", "-static", "$(FNAME)", "-o", "$(FNOEXT)" } },
                 cpp = { exec = "g++", args = { "-Wall", "-static", "$(FNAME)", "-o", "$(FNOEXT)" } },
-            }
+            },
+            testcases_input_file_format = "s5.$(TCNUM).in",
+            testcases_output_file_format = "s5.$(TCNUM).out"
         })
     end,
     keys = {
