@@ -8,6 +8,13 @@ vim.g.maplocalleader = ' '
 -- i don't know how to do this in lua
 vim.cmd('set autochdir')
 
+vim.g.enable_ai = true
+
+if vim.g.neovide then
+  -- the same color used for tokynight
+  vim.g.neovide_title_background_color = "#1a1b26"
+end
+
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
