@@ -6,15 +6,15 @@ return {
     { 'm4xshen/autoclose.nvim', main = "autoclose", opts = {} },
     { 'stevearc/dressing.nvim', opts = {} },
     { 'wakatime/vim-wakatime', lazy = false },
-    'equalsraf/neovim-gui-shim',
+    { 'equalsraf/neovim-gui-shim', enabled = (vim.fn.has('gui_running') and not vim.g.neovide) },
     'RaafatTurki/hex.nvim',
     { 'github/copilot.vim', enabled = false },
     { 'kana/vim-arpeggio', config = function ()
         vim.cmd[[
-Arpeggio imap jk <Esc> " input ESC when jk is pressed
-Arpeggio vmap jk <Esc> " input ESC when jk is pressed
-Arpeggio cmap kj <Esc> " input ESC when kj is pressed
-Arpeggio omap kj <Esc> " input ESC when kj is pressed
+Arpeggio imap kj <Esc>
+Arpeggio vmap kj <Esc>
+Arpeggio cmap kj <Esc>
+Arpeggio omap kj <Esc>
 ]]
     end },
 }
