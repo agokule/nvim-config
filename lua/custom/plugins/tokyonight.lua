@@ -15,7 +15,7 @@ return {
             comments = { italic = true },
             keywords = { italic = true },
             functions = {},
-            variables = {},
+            variables = { fg = "#c3c3c3" },
             -- Background styles. Can be "dark", "transparent" or "normal"
             sidebars = "moon",      -- style for sidebars, see below
             floats = "storm",       -- style for floating windows
