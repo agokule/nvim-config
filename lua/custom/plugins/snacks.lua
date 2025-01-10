@@ -92,7 +92,7 @@ return {
             timeout = 6000,
         },
         quickfile = { enabled = true },
-        scroll = { enabled = true },
+        scroll = { enabled = not vim.g.neovide },
         statuscolumn = { enabled = true },
         words = { enabled = true },
         -- scope = { enabled = true },
