@@ -5,6 +5,7 @@ return {
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
     build = ':TSUpdate',
+    event = "BufEnter",
     config = function()
         -- [[ Configure Treesitter ]]
         -- See `:help nvim-treesitter`

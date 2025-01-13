@@ -7,9 +7,7 @@ return {
     { 'stevearc/dressing.nvim', opts = {} },
     { 'wakatime/vim-wakatime', lazy = false },
     { 'equalsraf/neovim-gui-shim', enabled = (vim.fn.has('gui_running') and not vim.g.neovide) },
-    { 'RaafatTurki/hex.nvim', config = function ()
-        require('hex').setup()
-    end},
+    { 'RaafatTurki/hex.nvim', opts = {} },
     { 'github/copilot.vim', enabled = vim.g.enable_ai },
     { 'kana/vim-arpeggio', config = function ()
         vim.cmd[[
@@ -19,5 +17,13 @@ Arpeggio cmap kj <Esc>
 Arpeggio omap kj <Esc>
 ]]
     end },
-    { "uga-rosa/ccc.nvim", lazy = false, main = 'ccc', opts = {} },
+    {
+        "uga-rosa/ccc.nvim",
+        main = 'ccc',
+        keys = {
+            { '<leader>cc', ':CccPick<cr>', desc = "Pick a color" },
+            { '<leader>co', ':CccConvert<cr>', desc = "Convert a color between hex and rgb etc" },
+        }
+    },
+    { 'dyng/ctrlsf.vim' }
 }

@@ -9,7 +9,7 @@ return {
 
         'nvim-neotest/nvim-nio'
     },
-    init = function()
+    config = function()
         local dap = require 'dap'
         dap.set_exception_breakpoints({ "raised", "uncaught" })
         dap.set_log_level('TRACE')
@@ -48,6 +48,7 @@ return {
         require('dap').configurations.c = require('dap').configurations.cpp
         vim.fn.sign_define('DapBreakpoint', { text = '🔴' })
     end,
+    event = "BufEnter",
     keys = {
         { '<F5>', function() require('dap').continue() end, desc = 'Debug: Start/Continue' },
         { '<F1>', function() require('dap').step_into() end, desc = 'Debug: Step Into' },

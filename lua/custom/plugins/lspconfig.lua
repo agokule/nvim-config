@@ -70,6 +70,7 @@ return {
     {
         -- LSP Configuration & Plugins
         'neovim/nvim-lspconfig',
+        event = "BufEnter",
         dependencies = {
             -- Automatically install LSPs to stdpath for neovim
             'williamboman/mason.nvim',
@@ -77,12 +78,20 @@ return {
 
             -- Useful status updates for LSP
             -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-            { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
+            { 'j-hui/fidget.nvim', tag = 'legacy' },
         },
     },
     {
+        'williamboman/mason-lspconfig.nvim',
+        event = "BufEnter",
+        dependencies = { 'williamboman/mason.nvim' },
+        opts = {
+            ensure_installed = vim.tbl_keys(servers),
+        }
+    },
+    {
         'williamboman/mason.nvim',
-        dependencies = { 'williamboman/mason-lspconfig.nvim' },
+        event = "BufEnter",
         config = function ()
             -- mason-lspconfig requires that these setup functions are called in this order
             -- before setting up the servers.
@@ -94,10 +103,6 @@ return {
 
             -- Ensure the servers above are installed
             local mason_lspconfig = require 'mason-lspconfig'
-
-            mason_lspconfig.setup {
-                ensure_installed = vim.tbl_keys(servers),
-            }
 
             mason_lspconfig.setup_handlers {
                 function(server_name)
@@ -111,7 +116,8 @@ return {
                             end,
                             cmd = {
                                 vim.fn.stdpath("data") .. "\\mason\\bin\\clangd.cmd",
-                                "--function-arg-placeholders=0"
+                                "--function-arg-placeholders=0",
+                                "--completion-style=detailed"
                             }
                         }
                         return
