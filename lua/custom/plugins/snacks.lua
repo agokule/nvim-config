@@ -1,3 +1,11 @@
+-- if on windows, use py instead of python3
+local superheroyrr_cmd
+if vim.fn.has("win32") == 1 then
+    superheroyrr_cmd = "py " .. vim.fn.stdpath("config") .. "/superheroyrr.py"
+else
+    superheroyrr_cmd = "python3 " .. vim.fn.stdpath("config") .. "/superheroyrr.py"
+end
+
 return {
     "folke/snacks.nvim",
     priority = 1000,
@@ -14,7 +22,7 @@ return {
                 {
                     pane = 2,
                     section = "terminal",
-                    cmd = "superheroyrr.py",
+                    cmd = superheroyrr_cmd,
                     height = 10,
                     padding = 1,
                     align = "center",
