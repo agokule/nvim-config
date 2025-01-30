@@ -8,7 +8,6 @@ return {
     { 'wakatime/vim-wakatime', lazy = false },
     { 'equalsraf/neovim-gui-shim', enabled = (vim.fn.has('gui_running') and not vim.g.neovide) },
     { 'RaafatTurki/hex.nvim', opts = {} },
-    { 'github/copilot.vim', enabled = vim.g.enable_ai },
     { 'kana/vim-arpeggio', config = function ()
         vim.cmd[[
 Arpeggio imap kj <Esc>
