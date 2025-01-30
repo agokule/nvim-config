@@ -3,12 +3,11 @@ return {
   event = "VeryLazy",
   lazy = false,
   version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
+  enabled = vim.g.enable_ai,
   opts = {
     provider = "copilot",
   },
-  -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-  -- build = "make",
-  build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false", -- for windows
+  build = (vim.loop.os_uname().sysname == "Windows_NT") and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" or "make",
   dependencies = {
     "stevearc/dressing.nvim",
     "nvim-lua/plenary.nvim",
@@ -16,7 +15,7 @@ return {
     --- The below dependencies are optional,
     "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
     "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-    "zbirenbaum/copilot.lua", -- for providers='copilot'
+    { "zbirenbaum/copilot.lua", main = "copilot", opt = {}, cmd = "Copilot" }, -- for providers='copilot'
     {
       -- support for image pasting
       "HakonHarnes/img-clip.nvim",
