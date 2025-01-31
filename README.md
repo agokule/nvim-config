@@ -2,7 +2,7 @@
 
 Credits to [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) for the starting point of my config
 
-
+![image](https://github.com/user-attachments/assets/4a61fbb3-3f54-4205-afb2-cd6bf6e9b236)
 
 ## Features
 
