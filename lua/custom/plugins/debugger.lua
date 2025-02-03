@@ -18,7 +18,7 @@ return {
             id = 'cppdbg',
             type = 'executable',
             command =
-            "C:\\Users\\Atharv\\Downloads\\ms-vscode.cpptools-1.23.1@win32-x64.vsix\\extension\\debugAdapters\\bin\\OpenDebugAD7.exe",
+                "C:/Users/Atharv/Downloads/cpptools-windows-x64.-1.23.5.vsix/extension/debugAdapters/bin/OpenDebugAD7.exe",
             options = {
                 detached = false
             }
@@ -42,8 +42,6 @@ return {
                 },
             },
         }
-
-        require('dap.ext.vscode').load_launchjs(nil, {})
 
         require('dap').configurations.c = require('dap').configurations.cpp
         vim.fn.sign_define('DapBreakpoint', { text = '🔴' })

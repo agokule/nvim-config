@@ -1,32 +1,29 @@
 return {
     -- :h nvim-dap-ui
     'rcarriga/nvim-dap-ui',
-    opts = {
-        icons = { expanded = '▾', collapsed = '▸', current_frame = '*' },
-        controls = {
-            icons = {
-                pause = '',
-                play = '▶',
-                step_into = '',
-                step_over = '',
-                step_out = '',
-                step_back = '',
-                run_last = '▶▶',
-                terminate = ' ',
-                disconnect = '',
-            },
-        },
+    dependencies = {
+        "mfussenegger/nvim-dap",
+        "nvim-neotest/nvim-nio"
     },
     keys = {
         -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
-        { '<F7>', require('dapui').toggle, desc = 'Debug: See last session result.' },
+        { '<F7>', function () require('dapui').toggle() end, desc = 'Debug: See last session result.' },
     },
-    event = "BufEnter",
     config = function()
-        local dapui = require('dapui')
         local dap = require 'dap'
-        dap.listeners.after.event_initialized['dapui_config'] = dapui.open
-        dap.listeners.before.event_terminated['dapui_config'] = dapui.close
-        dap.listeners.before.event_exited['dapui_config'] = dapui.close
+        local dapui = require('dapui')
+        dapui.setup()
+        dap.listeners.before.attach.dapui_config = function()
+            dapui.open()
+        end
+        dap.listeners.before.launch.dapui_config = function()
+            dapui.open()
+        end
+        dap.listeners.before.event_terminated.dapui_config = function()
+            dapui.close()
+        end
+        dap.listeners.before.event_exited.dapui_config = function()
+            dapui.close()
+        end
     end,
 }
