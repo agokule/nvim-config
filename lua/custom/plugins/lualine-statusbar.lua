@@ -40,7 +40,8 @@ local function update_wakatime()
     )
 end
 
-set_interval(5000, update_wakatime)
+-- run every 60 seconds
+set_interval(60000, update_wakatime)
 
 local function get_wakatime()
     return current_time
