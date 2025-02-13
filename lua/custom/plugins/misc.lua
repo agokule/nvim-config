@@ -24,5 +24,20 @@ Arpeggio omap kj <Esc>
             { '<leader>co', ':CccConvert<cr>', desc = "Convert a color between hex and rgb etc" },
         }
     },
-    { 'dyng/ctrlsf.vim' }
+    {
+        "kelly-lin/telescope-ag",
+        dependencies = { "nvim-telescope/telescope.nvim" },
+        config = function()
+            local telescope_ag = require("telescope-ag")
+            telescope_ag.setup()
+
+            vim.keymap.set('n', '<leader>sa', function ()
+                vim.ui.input({ prompt = "Enter your search query: " }, function (inp)
+                    if inp and inp ~= "" then
+                        vim.cmd("Ag " .. inp)
+                    end
+                end)
+            end, { desc = "[S]earch by [A]g"})
+        end
+    }
 }
