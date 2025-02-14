@@ -5,6 +5,10 @@ vim.cmd('source ' .. vim.fn.stdpath('config') .. '/more_configs.vim')
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+if (vim.loop.os_uname().sysname == "Windows_NT") then
+    vim.env.PATH = vim.env.PATH .. ";C:/cygwin64/bin"
+end
+
 -- i don't know how to do this in lua
 vim.cmd('set autochdir')
 
