@@ -18,7 +18,7 @@ return {
             id = 'cppdbg',
             type = 'executable',
             command =
-                "C:/Users/Atharv/Downloads/cpptools-windows-x64.-1.23.5.vsix/extension/debugAdapters/bin/OpenDebugAD7.exe",
+                "OpenDebugAD7.cmd", -- mason should have this installed and in path specifically for neovim
             options = {
                 detached = false
             }
