@@ -33,26 +33,6 @@ let g:mapleader = ","
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
-fu! StartsWith(longer, shorter) abort
-  return a:longer[0:len(a:shorter)-1] ==# a:shorter
-endfunction
-
-fu! EndsWith(longer, shorter) abort
-  return a:longer[len(a:longer)-len(a:shorter):] ==# a:shorter
-endfunction
-
-fu! Contains(longer, shorter) abort
-  return stridx(a:longer, a:short) >= 0
-endfunction
-
-function! ShellEscape(cmd)
-  if has('win32') || has('win64')
-    return substitute(fnameescape(a:cmd), '\"', '\\\"', 'g')
-  else
-    return shellescape(a:cmd)
-  endif
-endfunction
-
 let g:python3_host_prog = 'py'
 
 " length of an actual \t character:
