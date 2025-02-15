@@ -26,7 +26,10 @@ if has('nvim')
 	autocmd TermOpen * setlocal nonumber norelativenumber
 endif
 
-au VimLeave * set guicursor=a:ver1-blinkon1
+" otherwise it will leave a thick cursor in powershell
+if has('win32')
+    au VimLeave * set guicursor=a:ver1-blinkon1
+endif
 
 let g:mapleader = ","
 
