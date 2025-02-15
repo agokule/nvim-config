@@ -181,7 +181,7 @@ return {
         { '<leader>s"', function() Snacks.picker.registers() end, desc = "Registers" },
         { '<leader>s/', function() Snacks.picker.search_history() end, desc = "Search History" },
         { "<leader>sC", function() Snacks.picker.autocmds() end, desc = "Autocmds" },
-        { "<leader>/", function() Snacks.picker.lines({ layout = { preset = "sidebar" }}) end, desc = "Buffer Lines" },
+        { "<leader>/", function() Snacks.picker.lines({ layout = { preset = "ivy", preview = "" }}) end, desc = "Buffer Lines" },
         { "<leader>sc", function() Snacks.picker.commands() end, desc = "Commands" },
         { "<leader>sd", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
         { "<leader>sD", function() Snacks.picker.diagnostics_buffer() end, desc = "Buffer Diagnostics" },
