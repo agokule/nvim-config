@@ -24,24 +24,7 @@ return {
         vim.keymap.set('n', '<leader>fo', function() harpoon:list():prev() end, { desc = 'Go to previous harpoon file' })
         vim.keymap.set('n', '<leader>fp', function() harpoon:list():next() end, { desc = 'Go to next harpoon file' })
 
-        local conf = require("telescope.config").values
-        local function toggle_telescope(harpoon_files)
-            local file_paths = {}
-            for _, item in ipairs(harpoon_files.items) do
-                table.insert(file_paths, item.value)
-            end
-
-            require("telescope.pickers").new({}, {
-                prompt_title = "Harpoon",
-                finder = require("telescope.finders").new_table({
-                    results = file_paths,
-                }),
-                previewer = conf.file_previewer({}),
-                sorter = conf.generic_sorter({}),
-            }):find()
-        end
-
-        vim.keymap.set("n", "<leader>fd", function() toggle_telescope(harpoon:list()) end,
+        vim.keymap.set("n", "<leader>fd", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end,
             { desc = "Open harpoon window" })
     end
 }
