@@ -96,6 +96,22 @@ vim.o.relativenumber = true
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
+local cmd
+if vim.fn.has('win32') then
+  if vim.fn.executable('pwsh') then
+    cmd = 'pwsh'
+  else
+    cmd = 'powershell'
+  end
+else
+  if vim.fn.executable('zsh') then
+    cmd = 'zsh'
+  else
+    cmd = 'bash'
+  end
+end
+vim.keymap.set('n', '<leader>tn', ':tabnew term://' .. cmd .. '<cr>', { desc = "New terminal tab (opens " .. cmd .. ')' })
+
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
