@@ -176,6 +176,7 @@ return {
         { "<leader>gf", function() Snacks.picker.git_log_file() end, desc = "Git Log File" },
         -- Grep
         { "<leader>sB", function() Snacks.picker.grep_buffers() end, desc = "Grep Open Buffers" },
+        { "<leader>sb", function() Snacks.picker.grep() end, desc = "Grep all files" },
         { "<leader>sw", function() Snacks.picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" } },
         -- search
         { '<leader>s"', function() Snacks.picker.registers() end, desc = "Registers" },
