@@ -9,6 +9,7 @@ return {
         -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
         { '<F7>', function () require('dapui').toggle() end, desc = 'Debug: See last session result.' },
     },
+    event = "BufRead",
     config = function()
         local dap = require 'dap'
         local dapui = require('dapui')

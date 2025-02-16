@@ -46,7 +46,7 @@ return {
         -- Adds LSP completion capabilities
         'hrsh7th/cmp-nvim-lsp'
     },
-    event = "BufEnter",
+    event = "BufRead",
     config = function()
         local cmp = require 'cmp'
         local luasnip = require 'luasnip'

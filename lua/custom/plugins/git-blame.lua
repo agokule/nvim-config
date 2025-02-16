@@ -15,4 +15,5 @@ return {
         virtual_text_column = 1, -- virtual text start column, check Start virtual text at column section for more options
         message_when_not_committed = "          Not committed yet", -- message when the current line is not yet committed
     },
+    enabled = false
 }

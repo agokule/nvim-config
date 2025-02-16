@@ -62,7 +62,7 @@ return {
     {
         -- LSP Configuration & Plugins
         'neovim/nvim-lspconfig',
-        event = "BufEnter",
+        event = "BufRead",
         dependencies = {
             -- Automatically install LSPs to stdpath for neovim
             'williamboman/mason.nvim',
@@ -72,7 +72,7 @@ return {
     },
     {
         'williamboman/mason-lspconfig.nvim',
-        event = "BufEnter",
+        event = "BufRead",
         dependencies = { 'williamboman/mason.nvim' },
         opts = {
             ensure_installed = vim.tbl_keys(servers),
@@ -80,7 +80,7 @@ return {
     },
     {
         'williamboman/mason.nvim',
-        event = "BufEnter",
+        event = "BufRead",
         config = function ()
             -- mason-lspconfig requires that these setup functions are called in this order
             -- before setting up the servers.
