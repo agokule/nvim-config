@@ -12,6 +12,22 @@ end
 -- i don't know how to do this in lua
 vim.cmd('set autochdir')
 
+if vim.fn.has('win32') then
+  vim.cmd[[
+    let &shell = executable('pwsh') ? 'pwsh' : 'powershell'
+    let &shellcmdflag = '-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();$PSDefaultParameterValues[''Out-File:Encoding'']=''utf8'';Remove-Alias -Force -ErrorAction SilentlyContinue tee;'
+    let &shellredir = '2>&1 | %%{ "$_" } | Out-File %s; exit $LastExitCode'
+    let &shellpipe  = '2>&1 | %%{ "$_" } | tee %s; exit $LastExitCode'
+    set shellquote= shellxquote=
+  ]]
+else
+  if vim.fn.executable('zsh') then
+    vim.o.shell = 'zsh'
+  else
+    vim.o.shell = 'bash'
+  end
+end
+
 vim.g.enable_ai = true
 
 if vim.g.neovide then
@@ -96,21 +112,7 @@ vim.o.relativenumber = true
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
-local cmd
-if vim.fn.has('win32') then
-  if vim.fn.executable('pwsh') then
-    cmd = 'pwsh'
-  else
-    cmd = 'powershell'
-  end
-else
-  if vim.fn.executable('zsh') then
-    cmd = 'zsh'
-  else
-    cmd = 'bash'
-  end
-end
-vim.keymap.set('n', '<leader>tn', ':tabnew term://' .. cmd .. '<cr>', { desc = "New terminal tab (opens " .. cmd .. ')' })
+vim.keymap.set('n', '<leader>tn', ':tabnew term://' .. vim.o.shell .. '<cr>', { desc = "New terminal tab (opens " .. vim.o.shell .. ')' })
 
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
