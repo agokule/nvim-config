@@ -106,6 +106,10 @@ vim.o.termguicolors = true
 
 vim.o.relativenumber = true
 
+-- set folds to indent but disable them by default
+vim.o.foldmethod = 'indent'
+vim.o.foldenable = false
+
 -- [[ Basic Keymaps ]]
 
 -- Keymaps for better default experience
