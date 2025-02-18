@@ -25,4 +25,9 @@ Arpeggio omap kj <Esc>
             { '<leader>co', ':CccConvert<cr>', desc = "Convert a color between hex and rgb etc" },
         }
     },
+    {
+        'HiPhish/rainbow-delimiters.nvim',
+        main = 'rainbow-delimiters.setup',
+        opts = {}
+    },
 }
