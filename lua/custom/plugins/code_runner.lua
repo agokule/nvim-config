@@ -28,7 +28,7 @@ return {
                     "cd \"$dir\" &&",
                     "gcc -Wall -static \"$fileName\"",
                     "-o \"$fileNameWithoutExt\" &&",
-                    "\"$fileNameWithoutExt\""
+                    "& \"$dir/$fileNameWithoutExt\""
                 },
                 dosbatch = { -- *.bat and *.cmd files
                     "cd \"$dir\" &&",
