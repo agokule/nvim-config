@@ -22,7 +22,7 @@ return {
                     "cd \"$dir\" &&",
                     "g++ -Wall -static -std=c++17 \"$fileName\"",
                     "-o \"$fileNameWithoutExt\" &&",
-                    "\"$fileNameWithoutExt\""
+                    "& \"$dir/$fileNameWithoutExt\""
                 },
                 c = {
                     "cd \"$dir\" &&",
