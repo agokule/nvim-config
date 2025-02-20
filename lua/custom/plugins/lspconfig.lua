@@ -73,49 +73,26 @@ return {
         dependencies = { 'williamboman/mason.nvim' },
         opts = {
             ensure_installed = vim.tbl_keys(servers),
+            handlers = {
+                function(server_name)
+                    require('lspconfig')[server_name].setup { on_attach = on_attach }
+                end,
+                ["clangd"] = function ()
+                    require('lspconfig').clangd.setup {
+                        on_attach = on_attach,
+                        cmd = {
+                            "clangd",
+                            "--function-arg-placeholders=0",
+                            "--completion-style=detailed"
+                        }
+                    }
+                end
+            }
         }
     },
     {
         'williamboman/mason.nvim',
         event = "BufRead",
-        config = function ()
-            -- mason-lspconfig requires that these setup functions are called in this order
-            -- before setting up the servers.
-            require('mason').setup()
-
-            -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
-            local capabilities = vim.lsp.protocol.make_client_capabilities()
-            capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
-
-            -- Ensure the servers above are installed
-            local mason_lspconfig = require 'mason-lspconfig'
-
-            mason_lspconfig.setup_handlers {
-                function(server_name)
-                    if server_name == 'clangd' then
-                        require('lspconfig').clangd.setup {
-                            on_attach = function(client, bufnr)
-                                if server_name == 'clangd' then
-                                    client.server_capabilities.signatureHelpProvider = false
-                                end
-                                on_attach(client, bufnr)
-                            end,
-                            cmd = {
-                                vim.fn.stdpath("data") .. "\\mason\\bin\\clangd.cmd",
-                                "--function-arg-placeholders=0",
-                                "--completion-style=detailed"
-                            }
-                        }
-                        return
-                    end
-                    require('lspconfig')[server_name].setup {
-                        on_attach = on_attach,
-                        capabilities = capabilities,
-                        settings = servers[server_name],
-                        filetypes = (servers[server_name] or {}).filetypes,
-                    }
-                end,
-            }
-        end
+        opts = {}
     }
 }
