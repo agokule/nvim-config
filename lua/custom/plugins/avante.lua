@@ -1,14 +1,22 @@
 return {
   "yetone/avante.nvim",
-  event = "BufRead",
+  lazy = true,
   version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
   enabled = vim.g.enable_ai,
-  opts = {
-    provider = "copilot",
+  opts = {},
+  cmd = {
+    'AvanteAsk',
+    'AvanteBuild',
+    'AvanteChat',
+    'AvanteEdit',
+    'AvanteFocus',
+    'AvanteRefresh',
+    'AvanteSwitchProvider',
+    'AvanteToggle',
+    'AvanteShowRepoMap'
   },
   build = (vim.loop.os_uname().sysname == "Windows_NT") and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" or "make",
   dependencies = {
-    "stevearc/dressing.nvim",
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
     --- The below dependencies are optional,
