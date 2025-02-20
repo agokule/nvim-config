@@ -5,6 +5,9 @@ vim.cmd('source ' .. vim.fn.stdpath('config') .. '/more_configs.vim')
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- disable osc52 bc it takes 500ms to load on my machine
+vim.g.osc52 = false
+
 if (vim.loop.os_uname().sysname == "Windows_NT") then
     vim.env.PATH = vim.env.PATH .. ";C:/cygwin64/bin"
 end
