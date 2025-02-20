@@ -39,10 +39,6 @@ local longest_menu_kind_type_len = 13 -- It is TypeParameter
 return {
     'hrsh7th/nvim-cmp',
     dependencies = {
-        -- Snippet Engine & its associated nvim-cmp source
-        'L3MON4D3/LuaSnip',
-        'saadparwaiz1/cmp_luasnip',
-
         -- Adds LSP completion capabilities
         'hrsh7th/cmp-nvim-lsp',
 
@@ -52,16 +48,8 @@ return {
     event = "BufRead",
     config = function()
         local cmp = require 'cmp'
-        local luasnip = require 'luasnip'
-        require('luasnip.loaders.from_vscode').lazy_load()
-        luasnip.config.setup {}
 
         cmp.setup {
-            snippet = {
-                expand = function(args)
-                    luasnip.lsp_expand(args.body)
-                end,
-            },
             mapping = cmp.mapping.preset.insert {
                 ['<C-j>'] = cmp.mapping.select_next_item(),
                 ['<C-k>'] = cmp.mapping.select_prev_item(),
