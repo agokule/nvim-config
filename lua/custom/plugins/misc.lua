@@ -1,6 +1,5 @@
 return {
     'tpope/vim-sleuth',
-    "folke/lazydev.nvim",
     { 'mbbill/undotree', keys = { { '<C-Z>', vim.cmd.UndotreeToggle, desc = "Toggle undotree" } } },
     { 'mg979/vim-visual-multi', event = "BufRead" },
     { 'm4xshen/autoclose.nvim', main = "autoclose", opts = {} },

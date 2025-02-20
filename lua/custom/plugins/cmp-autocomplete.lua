@@ -77,7 +77,6 @@ return {
                 { name = 'nvim_lsp' },
                 { name = 'luasnip' },
                 { name = 'codeium' },
-                { name = 'lazydev', group_index = 0 },
             },
             formatting = {
                 fields = { 'kind', 'abbr', 'menu' },
@@ -88,7 +87,6 @@ return {
                             nvim_lsp = "[LSP]",
                             luasnip = "[LuaSnip]",
                             codeium = "[Codeium]",
-                            lazydev = "[LazyDev]",
                         })[entry.source.name]
                     vim_item.kind = cmp_menu_icons[vim_item.kind]
 
