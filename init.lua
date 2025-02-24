@@ -15,7 +15,7 @@ end
 -- i don't know how to do this in lua
 vim.cmd('set autochdir')
 
-if vim.fn.has('win32') then
+if vim.fn.has('win32') ~= 0 then
   vim.cmd[[
     let &shell = executable('pwsh') ? 'pwsh' : 'powershell'
     let &shellcmdflag = '-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();$PSDefaultParameterValues[''Out-File:Encoding'']=''utf8'';Remove-Alias -Force -ErrorAction SilentlyContinue tee;'
@@ -24,7 +24,7 @@ if vim.fn.has('win32') then
     set shellquote= shellxquote=
   ]]
 else
-  if vim.fn.executable('zsh') then
+  if vim.fn.executable('zsh') ~= 0 then
     vim.o.shell = 'zsh'
   else
     vim.o.shell = 'bash'
