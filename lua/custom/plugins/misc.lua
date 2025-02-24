@@ -3,7 +3,7 @@ return {
     { 'mbbill/undotree', keys = { { '<C-Z>', vim.cmd.UndotreeToggle, desc = "Toggle undotree" } } },
     { 'mg979/vim-visual-multi', event = "BufRead" },
     { 'm4xshen/autoclose.nvim', event = "InsertEnter", main = "autoclose", opts = {} },
-    { 'wakatime/vim-wakatime', lazy = false },
+    { 'wakatime/vim-wakatime', lazy = false, event = 'UIEnter' },
     { 'equalsraf/neovim-gui-shim', enabled = (vim.fn.has('gui_running') and not vim.g.neovide) },
     { 'RaafatTurki/hex.nvim', opts = {}, cmd = { "HexToggle", "HexDump", "HexAssemble" } },
     { 'kana/vim-arpeggio', config = function ()

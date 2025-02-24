@@ -70,5 +70,6 @@ return {
             lualine_y = { 'progress', get_wakatime },
             lualine_z = { 'location' }
         }
-    }
+    },
+    event = 'UIEnter'
 }

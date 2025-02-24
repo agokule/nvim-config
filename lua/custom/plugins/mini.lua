@@ -16,7 +16,8 @@ return {
                 down = 'J',
                 up = 'K',
             }
-        }
+        },
+        event = 'UIEnter'
     },
     {
         'echasnovski/mini.map',
