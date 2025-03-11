@@ -15,6 +15,15 @@ return {
     'AvanteToggle',
     'AvanteShowRepoMap'
   },
+  keys = {
+    { '<leader>aa', ':AvanteAsk<cr>', desc = 'Ask Avante' },
+    { '<leader>ae', ':AvanteEdit<cr>', desc = 'Edit code with Avante' },
+    { '<leader>ac', ':AvanteChat<cr>', desc = 'Chat with Avante' },
+    { '<leader>af', ':AvanteFocus<cr>', desc = 'Switch sidebar focus avante' },
+    { '<leader>ar', ':AvanteRefresh<cr>', desc = 'Refresh avante sidebar' },
+    { '<leader>a?', ':AvanteSwitchProvider<cr>', desc = 'Switch avante ai model' },
+    { '<leader>at', ':AvanteToggle<cr>', desc = 'Toggle avante sidebar visibility' },
+  },
   build = (vim.loop.os_uname().sysname == "Windows_NT") and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" or "make",
   dependencies = {
     "nvim-lua/plenary.nvim",
