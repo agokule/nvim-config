@@ -36,4 +36,13 @@ return {
             { '<leader>mt', function () MiniMap.toggle() end, desc = "Toggle MiniMap" },
         }
     },
+    {
+        'echasnovski/mini.files',
+        main = 'mini.files',
+        opts = {},
+        keys = {
+            { '<leader>:', function () MiniFiles.open() end, desc = "Open MiniFiles" },
+        },
+        version = '*'
+    }
 }
