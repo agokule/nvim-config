@@ -17,7 +17,7 @@ return {
                 up = 'K',
             }
         },
-        event = 'UIEnter'
+        event = 'VeryLazy'
     },
     {
         'echasnovski/mini.map',
