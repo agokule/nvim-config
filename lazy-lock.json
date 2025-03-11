@@ -1,6 +1,6 @@
 {
   "autoclose.nvim": { "branch": "main", "commit": "b2077aa2c83df7ebc19b2a20a3a0654b24ae9c8f" },
-  "avante.nvim": { "branch": "main", "commit": "32665974ee6c8b468936e6b2f23fca5abfc014de" },
+  "avante.nvim": { "branch": "main", "commit": "9c7a1a59ac85b81e6f0b3465980dddcd0e6a0926" },
   "ccc.nvim": { "branch": "main", "commit": "b57cbaf8db3ac43c56c9e2c7f3812944638260ed" },
   "cmp-nvim-lsp": { "branch": "main", "commit": "99290b3ec1322070bcfb9e846450a46f6efa50f0" },
   "code_runner.nvim": { "branch": "main", "commit": "50a59cbc53e62cd6c171023935a19a79b4bf42fb" },
@@ -22,6 +22,9 @@
   "lualine.nvim": { "branch": "master", "commit": "f4f791f67e70d378a754d02da068231d2352e5bc" },
   "mason-lspconfig.nvim": { "branch": "main", "commit": "1a31f824b9cd5bc6f342fc29e9a53b60d74af245" },
   "mason.nvim": { "branch": "main", "commit": "fc98833b6da5de5a9c5b1446ac541577059555be" },
+  "mini.files": { "branch": "main", "commit": "0a396f5ca5516a07959ae2c00667e1a26c20f0ea" },
+  "mini.map": { "branch": "main", "commit": "7f4c785b95ff6d266588fe6e5b6ea696cf654e61" },
+  "mini.move": { "branch": "main", "commit": "c8b30e92dd2668dd6e56a9a23cb7d4ee38c2266d" },
   "neo-tree.nvim": { "branch": "v3.x", "commit": "e96fd85bf18bc345dab332b345098fa5460dffac" },
   "neogit": { "branch": "master", "commit": "12f78aaabb37b4946254dd5e47cf7b552904937a" },
   "neovim-gui-shim": { "branch": "master", "commit": "4d10bf3f68b9c0903bd1d9e456571d1d2ec16fde" },
