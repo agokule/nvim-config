@@ -11,7 +11,7 @@ local function setup_vendors()
   -- Read the response body
   local body, status = handle:read('*a')
   handle:close()
-  
+
   if not body or status ~= 0 then
     vim.notify(string.format('Curl failed with status code: %d', status))
     return
@@ -41,7 +41,7 @@ return {
   lazy = true,
   version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
   enabled = vim.g.enable_ai,
-  opts = function (table)
+  opts = function ()
     return {
       vendors = setup_vendors(),
     }
