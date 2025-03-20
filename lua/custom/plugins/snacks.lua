@@ -116,6 +116,7 @@ return {
                     colorcolumn = "",
                 },
                 bo = { filetype = "snacks_notif" },
+                relative = "editor"
             }
         },
         picker = {}
