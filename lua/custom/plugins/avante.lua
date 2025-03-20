@@ -9,11 +9,11 @@ local function setup_vendors()
   end
 
   -- Read the response body
-  local body, status = handle:read('*a')
+  local body = handle:read('*a')
   handle:close()
 
-  if not body or status ~= 0 then
-    vim.notify(string.format('Curl failed with status code: %d', status))
+  if not body then
+    vim.notify('Curl failed: ' .. body)
     return
   end
 
