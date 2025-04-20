@@ -162,7 +162,6 @@ vim.keymap.set('n', ']d', function ()
   vim.diagnostic.jump({ diagnostic = vim.diagnostic.get_next() })
 end, { desc = 'Go to next diagnostic message' })
 
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
 vim.keymap.set('n', 'gdl', function()
@@ -171,9 +170,9 @@ vim.keymap.set('n', 'gdl', function()
 end, { desc = 'Toggle diagnostic virtual_lines' })
 
 vim.keymap.set('n', 'gdt', function()
-  local new_config = not vim.diagnostic.config().virtual_lines
-  vim.diagnostic.config({ virtual_lines = new_config })
-end, { desc = 'Toggle diagnostic virtual_lines' })
+  local new_config = not vim.diagnostic.config().virtual_text
+  vim.diagnostic.config({ virtual_text = new_config })
+end, { desc = 'Toggle diagnostic virtual_text' })
 
 vim.keymap.set('n', 'gdd', function () vim.diagnostic.open_float({ border = "rounded" }) end, { desc = 'Open diagnostic float' })
 
