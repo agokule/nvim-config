@@ -1,6 +1,6 @@
 -- [[ Configure nvim-cmp ]]
 -- See `:help cmp`
-function setDefault(t, d)
+local function setDefault(t, d)
     local mt = { __index = function() return d end }
     setmetatable(t, mt)
 end
