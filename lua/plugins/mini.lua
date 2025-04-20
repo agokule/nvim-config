@@ -11,8 +11,8 @@ return {
         opts = {
             mappings = {
                 -- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.
-                left = 'H',
-                right = 'L',
+                left = '<',
+                right = '>',
                 down = 'J',
                 up = 'K',
             }
