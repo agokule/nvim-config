@@ -175,7 +175,7 @@ vim.keymap.set('n', 'gdt', function()
   vim.diagnostic.config({ virtual_lines = new_config })
 end, { desc = 'Toggle diagnostic virtual_lines' })
 
-vim.keymap.set('n', 'gdd', vim.diagnostic.open_float, { desc = 'Open diagnostic float' })
+vim.keymap.set('n', 'gdd', function () vim.diagnostic.open_float({ border = "rounded" }) end, { desc = 'Open diagnostic float' })
 
 -- temporary fix for https://github.com/neovim/neovim/issues/8587
 -- taken from https://github.com/neovim/neovim/issues/8587#issuecomment-2176399196
