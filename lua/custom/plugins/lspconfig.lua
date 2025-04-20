@@ -80,11 +80,7 @@ return {
                 ["clangd"] = function ()
                     require('lspconfig').clangd.setup {
                         on_attach = on_attach,
-                        cmd = {
-                            "clangd",
-                            "--function-arg-placeholders=0",
-                            "--completion-style=detailed"
-                        }
+                        cmd = { "clangd", "--completion-style=detailed" }
                     }
                 end
             }
