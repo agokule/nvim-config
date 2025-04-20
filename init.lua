@@ -154,10 +154,28 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- Diagnostic keymaps
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
+vim.keymap.set('n', '[d', function ()
+  vim.diagnostic.jump({ diagnostic = vim.diagnostic.get_prev() })
+end, { desc = 'Go to previous diagnostic message' })
+
+vim.keymap.set('n', ']d', function ()
+  vim.diagnostic.jump({ diagnostic = vim.diagnostic.get_next() })
+end, { desc = 'Go to next diagnostic message' })
+
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+
+vim.keymap.set('n', 'gdl', function()
+  local new_config = not vim.diagnostic.config().virtual_lines
+  vim.diagnostic.config({ virtual_lines = new_config })
+end, { desc = 'Toggle diagnostic virtual_lines' })
+
+vim.keymap.set('n', 'gdt', function()
+  local new_config = not vim.diagnostic.config().virtual_lines
+  vim.diagnostic.config({ virtual_lines = new_config })
+end, { desc = 'Toggle diagnostic virtual_lines' })
+
+vim.keymap.set('n', 'gdd', vim.diagnostic.open_float, { desc = 'Open diagnostic float' })
 
 -- temporary fix for https://github.com/neovim/neovim/issues/8587
 -- taken from https://github.com/neovim/neovim/issues/8587#issuecomment-2176399196
