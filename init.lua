@@ -56,15 +56,14 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- NOTE: Here is where you install your plugins.
---  You can configure plugins using the `config` key.
---
---  You can also configure plugins after the setup call,
---    as they will be available in your neovim runtime.
 require('lazy').setup({
-  { import = 'plugins', defaults = { lazy = true } },
+  { import = 'plugins.essentials' },
+  { import = 'plugins.lsp-debugger', enabled = (not vim.g.vscode) },
+  { import = 'plugins.code-files' },
+  { import = 'plugins.ai', enabled = (vim.g.enable_ai and not vim.g.vscode) },
+  { import = 'plugins.ui', enabled = (not vim.g.vscode) },
+  { import = 'plugins.git', enabled = (not vim.g.vscode) },
 }, {})
--- End of installing packages
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
