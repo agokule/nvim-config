@@ -10,8 +10,12 @@ vim.cmd('source ' .. vim.fn.stdpath('config') .. '/more_configs.vim')
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-if (vim.loop.os_uname().sysname == "Windows_NT") then
-    vim.env.PATH = vim.env.PATH .. ";C:/cygwin64/bin"
+if (vim.fn.has('win32')) then
+  vim.env.PATH = vim.env.PATH .. ";C:/cygwin64/bin"
+  -- check if c:/cygwin64/bin exists
+  if (vim.fn.isdirectory('C:/cygwin64/bin') == 0) then
+    vim.notify("C:/cygwin64/bin does not exist", vim.log.levels.WARN)
+  end
 end
 
 -- i don't know how to do this in lua
