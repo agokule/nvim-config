@@ -76,12 +76,14 @@ return {
             handlers = {
                 function(server_name)
                     vim.lsp.config(server_name, { on_attach = on_attach })
+                    vim.lsp.enable(server_name)
                 end,
                 ["clangd"] = function ()
                     vim.lsp.config("clangd", {
                         on_attach = on_attach,
                         cmd = { "clangd", "--completion-style=detailed" }
                     })
+                    vim.lsp.enable("clangd")
                 end
             }
         }
