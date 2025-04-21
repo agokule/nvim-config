@@ -167,24 +167,31 @@ end, { desc = 'Go to next diagnostic message' })
 
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
-vim.keymap.set('n', 'gdl', function()
-  local new_config = not vim.diagnostic.config().virtual_lines
-  if new_config == false then
-      vim.diagnostic.config({ virtual_lines = new_config })
-  else
-      vim.diagnostic.config({ virtual_lines = { current_line = new_config } })
-  end
-end, { desc = 'Toggle diagnostic virtual_lines' })
+-- Helper function to toggle diagnostic display options
+local function toggle_diagnostic_display(option_name)
+  local current_config = vim.diagnostic.config()[option_name]
+  local is_enabled = current_config ~= false
+  local is_current_line_only = type(current_config) == "table" and current_config.current_line == true
 
-vim.keymap.set('n', 'gdt', function()
-  local new_config = not vim.diagnostic.config().virtual_text
-  if new_config == false then
-      vim.diagnostic.config({ virtual_text = new_config })
+  if is_enabled then
+    if is_current_line_only then
+      -- If currently enabled for current line only, turn it off completely
+      vim.notify("Disabled diagnostic " .. option_name .. " completely", vim.log.levels.INFO)
+      vim.diagnostic.config({ [option_name] = false })
+    else
+      -- If currently enabled for all lines, change to current line only
+      vim.notify("Enabled diagnostic " .. option_name .. " for current line only", vim.log.levels.INFO)
+      vim.diagnostic.config({ [option_name] = { current_line = true } })
+    end
   else
-      vim.diagnostic.config({ virtual_text = { current_line = new_config } })
+    -- If currently disabled, enable for all lines
+    vim.notify("Enabled diagnostic " .. option_name .. " for all lines", vim.log.levels.INFO)
+    vim.diagnostic.config({ [option_name] = true })
   end
-end, { desc = 'Toggle diagnostic virtual_text' })
+end
 
+vim.keymap.set('n', 'gdl', function() toggle_diagnostic_display("virtual_lines") end, { desc = 'Toggle diagnostic virtual_lines' })
+vim.keymap.set('n', 'gdt', function() toggle_diagnostic_display("virtual_text") end, { desc = 'Toggle diagnostic virtual_text' })
 vim.keymap.set('n', 'gdd', function () vim.diagnostic.open_float({ border = "rounded" }) end, { desc = 'Open diagnostic float' })
 
 -- temporary fix for https://github.com/neovim/neovim/issues/8587
