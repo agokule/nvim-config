@@ -75,13 +75,13 @@ return {
             ensure_installed = vim.tbl_keys(servers),
             handlers = {
                 function(server_name)
-                    require('lspconfig')[server_name].setup { on_attach = on_attach }
+                    vim.lsp.config(server_name, { on_attach = on_attach })
                 end,
                 ["clangd"] = function ()
-                    require('lspconfig').clangd.setup {
+                    vim.lsp.config("clangd", {
                         on_attach = on_attach,
                         cmd = { "clangd", "--completion-style=detailed" }
-                    }
+                    })
                 end
             }
         }
