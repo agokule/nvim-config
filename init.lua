@@ -166,12 +166,20 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 
 vim.keymap.set('n', 'gdl', function()
   local new_config = not vim.diagnostic.config().virtual_lines
-  vim.diagnostic.config({ virtual_lines = new_config })
+  if new_config == false then
+      vim.diagnostic.config({ virtual_lines = new_config })
+  else
+      vim.diagnostic.config({ virtual_lines = { current_line = new_config } })
+  end
 end, { desc = 'Toggle diagnostic virtual_lines' })
 
 vim.keymap.set('n', 'gdt', function()
   local new_config = not vim.diagnostic.config().virtual_text
-  vim.diagnostic.config({ virtual_text = new_config })
+  if new_config == false then
+      vim.diagnostic.config({ virtual_text = new_config })
+  else
+      vim.diagnostic.config({ virtual_text = { current_line = new_config } })
+  end
 end, { desc = 'Toggle diagnostic virtual_text' })
 
 vim.keymap.set('n', 'gdd', function () vim.diagnostic.open_float({ border = "rounded" }) end, { desc = 'Open diagnostic float' })
