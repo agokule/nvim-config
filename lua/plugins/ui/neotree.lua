@@ -8,8 +8,9 @@ return {
         -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
     },
     keys = {
-        { "<leader>fe", ':Neotree<cr>', desc = "Open Neotree (FileExplorer)" },
+        { "<leader>fe", ':Neotree float<cr>', desc = "Open Neotree (FileExplorer) in float" },
     },
+    cmd = { 'Neotree' },
     opts = {
         filesystem = {
             filetered_items = {
