@@ -58,8 +58,8 @@ return {
     'AvanteShowRepoMap'
   },
   keys = {
-    { '<leader>aa', function() require('avante.api').ask() end, desc = 'Ask Avante' },
-    { '<leader>ae', function() require('avante.api').edit() end, desc = 'Edit code with Avante' },
+    { '<leader>aa', function() require('avante.api').ask() end, desc = 'Ask Avante', mode = { 'n', 'v' } },
+    { '<leader>ae', function() require('avante.api').edit() end, desc = 'Edit code with Avante', mode = { 'n', 'v' } },
     { '<leader>ac', function() require('avante.api').chat() end, desc = 'Chat with Avante' },
     { '<leader>af', function() require('avante.api').focus() end, desc = 'Switch sidebar focus avante' },
     { '<leader>ar', function() require('avante.api').refresh() end, desc = 'Refresh avante sidebar' },
