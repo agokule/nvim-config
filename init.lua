@@ -147,7 +147,7 @@ vim.keymap.set('i', '<C-BS>', '<C-W>', { desc = 'Delete the previous word in ins
 
 vim.keymap.set('n', '<leader>cp', function()
   local current_file = vim.api.nvim_buf_get_name(0)
-  local current_file_name = vim.fn.fnamemodify(current_file, ':t:r')
+  local current_file_name = vim.fn.fnamemodify(current_file, ':r')
   local current_file_ext = vim.fn.fnamemodify(current_file, ':e')
 
   if current_file_ext == 'cpp' then
