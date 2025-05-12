@@ -37,8 +37,6 @@ else
   end
 end
 
-vim.g.enable_ai = true
-
 if vim.g.neovide then
   -- the same color used for tokynight
   vim.g.neovide_title_background_color = "#1a1b26"
