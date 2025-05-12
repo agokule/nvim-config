@@ -161,7 +161,7 @@ return {
         { "<leader>?", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
         { "<leader><space>", function() Snacks.picker.buffers() end, desc = "Buffers" },
         { "<leader>s:", function() Snacks.picker.command_history() end, desc = "Command History" },
-        { "<leader>n", function() Snacks.picker.notifications() end, desc = "Notification History" },
+        { "<leader>sn", function() Snacks.picker.notifications() end, desc = "Search Notification History" },
         -- find
         { "<leader>sg", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File" },
         { "<leader>sf", function() Snacks.picker.files() end, desc = "Find Files" },
