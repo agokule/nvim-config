@@ -10,6 +10,8 @@ vim.cmd('source ' .. vim.fn.stdpath('config') .. '/more_configs.vim')
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+require('local-settings')
+
 if (vim.fn.has('win32')) then
   vim.env.PATH = vim.env.PATH .. ";C:/cygwin64/bin"
   -- check if c:/cygwin64/bin exists
