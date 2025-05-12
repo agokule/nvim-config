@@ -208,6 +208,24 @@ vim.keymap.set('n', 'gdl', function() toggle_diagnostic_display("virtual_lines")
 vim.keymap.set('n', 'gdt', function() toggle_diagnostic_display("virtual_text") end, { desc = 'Toggle diagnostic virtual_text' })
 vim.keymap.set('n', 'gdd', function () vim.diagnostic.open_float({ border = "rounded" }) end, { desc = 'Open diagnostic float' })
 
+-- Creates a progress bar for LSP loading
+vim.api.nvim_create_autocmd("LspProgress", {
+  ---@param ev {data: {client_id: integer, params: lsp.ProgressParams}}
+  callback = function(ev)
+    if not vim.g.lsp_progress then return end
+
+    local spinner = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" }
+    vim.notify(vim.lsp.status(), "info", {
+      id = "lsp_progress",
+      title = "LSP Progress",
+      opts = function(notif)
+        notif.icon = ev.data.params.value.kind == "end" and " "
+          or spinner[math.floor(vim.uv.hrtime() / (1e6 * 80)) % #spinner + 1]
+      end,
+    })
+  end,
+})
+
 -- temporary fix for https://github.com/neovim/neovim/issues/8587
 -- taken from https://github.com/neovim/neovim/issues/8587#issuecomment-2176399196
 vim.api.nvim_create_user_command("ClearShada", function()
