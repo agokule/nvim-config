@@ -247,6 +247,14 @@ return {
                 Snacks.toggle.indent():map("<leader>uG")
                 Snacks.toggle.dim():map("<leader>uD")
 
+                -- LSP Progress
+                Snacks.toggle.new({
+                    name = "LSP Progress",
+                    id = "lsp_progress",
+                    get = function() return vim.g.lsp_progress end,
+                    set = function(state) vim.g.lsp_progress = state end
+                }):map("<leader>up")
+
                 -- animations (either neovide or snacks-animate)
                 if (vim.g.neovide) then
                     vim.g.default_cursor_animation_length = vim.g.neovide_cursor_animation_length
@@ -279,6 +287,15 @@ return {
                         end
                     end,
                 }):map("<leader>ua")
+
+                if vim.g.neovide then
+                    Snacks.toggle.new({
+                        id = 'fullscreen',
+                        name = 'Fullscreen Mode',
+                        get = function() return vim.g.neovide_fullscreen end,
+                        set = function(state) vim.g.neovide_fullscreen = state end
+                    }):map('<F11>')
+                end
             end,
         })
     end,
