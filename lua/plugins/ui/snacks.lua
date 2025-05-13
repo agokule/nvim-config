@@ -246,6 +246,39 @@ return {
                 Snacks.toggle.inlay_hints():map("<leader>uh")
                 Snacks.toggle.indent():map("<leader>uG")
                 Snacks.toggle.dim():map("<leader>uD")
+
+                -- animations (either neovide or snacks-animate)
+                if (vim.g.neovide) then
+                    vim.g.default_cursor_animation_length = vim.g.neovide_cursor_animation_length
+                    vim.g.default_position_animation_length = vim.g.neovide_position_animation_length
+                    vim.g.default_scroll_animation_length = vim.g.neovide_scroll_animation_length
+                end
+                Snacks.toggle.new({
+                    id = "animations",
+                    name = "Animations",
+                    get = function()
+                        if not vim.g.neovide then
+                            return vim.g.snacks_animate ~= false
+                        else
+                            return vim.g.neovide_cursor_animation_length ~= 0
+                        end
+                    end,
+                    set = function(state)
+                        if not vim.g.neovide then
+                            vim.g.snacks_animate = state
+                        end
+
+                        if state then
+                            vim.g.neovide_cursor_animation_length = vim.g.default_cursor_animation_length
+                            vim.g.neovide_position_animation_length = vim.g.default_position_animation_length
+                            vim.g.neovide_scroll_animation_length = vim.g.default_scroll_animation_length
+                        else
+                            vim.g.neovide_cursor_animation_length = 0
+                            vim.g.neovide_position_animation_length = 0
+                            vim.g.neovide_scroll_animation_length = 0
+                        end
+                    end,
+                }):map("<leader>ua")
             end,
         })
     end,
