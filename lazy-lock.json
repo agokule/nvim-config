@@ -11,7 +11,6 @@
   "csvview.nvim": { "branch": "main", "commit": "6eb9c7293d35c40a71ec1eb9c653d80e8de5a2e9" },
   "diffview.nvim": { "branch": "main", "commit": "4516612fe98ff56ae0415a259ff6361a89419b0a" },
   "dropbar.nvim": { "branch": "master", "commit": "cb7c17bb35fe8860d490dfd1d5c45fce40ecba26" },
-  "fidget.nvim": { "branch": "main", "commit": "d9ba6b7bfe29b3119a610892af67602641da778e" },
   "gitsigns.nvim": { "branch": "main", "commit": "2149fc2009d1117d58e86e56836f70c969f60a82" },
   "harpoon": { "branch": "harpoon2", "commit": "ed1f853847ffd04b2b61c314865665e1dadf22c7" },
   "hex.nvim": { "branch": "master", "commit": "fcff75fcf43b5a6c5b471eed65b3a06c412d6020" },
