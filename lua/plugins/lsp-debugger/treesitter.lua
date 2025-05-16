@@ -5,7 +5,7 @@ return {
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
     build = ':TSUpdate',
-    event = "BufRead",
+    event = "LazyFile",
     config = function()
         -- [[ Configure Treesitter ]]
         -- See `:help nvim-treesitter`

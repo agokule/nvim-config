@@ -28,5 +28,5 @@ return {
         { '<leader>ugn', function () require('gitsigns').toggle_numhl() end, desc = 'Toggle current line number git highlight' },
         { '<leader>ugb', function () require('gitsigns').toggle_current_line_blame() end, desc = 'Toggle current line git blame' },
     },
-    event = 'BufRead'
+    event = 'LazyFile'
 }

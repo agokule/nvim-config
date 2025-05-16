@@ -59,7 +59,7 @@ return {
     {
         -- LSP Configuration & Plugins
         'neovim/nvim-lspconfig',
-        event = "BufRead",
+        event = "LazyFile",
         dependencies = {
             -- Automatically install LSPs to stdpath for neovim
             'williamboman/mason.nvim',
@@ -68,7 +68,7 @@ return {
     },
     {
         'williamboman/mason-lspconfig.nvim',
-        event = "BufRead",
+        event = "LazyFile",
         dependencies = { 'williamboman/mason.nvim' },
         opts = {
             ensure_installed = vim.tbl_keys(servers),
@@ -89,7 +89,7 @@ return {
     },
     {
         'williamboman/mason.nvim',
-        event = "BufRead",
+        event = "LazyFile",
         opts = {}
     }
 }

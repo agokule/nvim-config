@@ -60,6 +60,8 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+require('lazy-file')
+
 require('lazy').setup({
   { import = 'plugins.essentials' },
   { import = 'plugins.lsp-debugger', enabled = (not vim.g.vscode) },

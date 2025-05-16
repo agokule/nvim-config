@@ -45,7 +45,7 @@ return {
         -- Makes LSP completions colorful
         "xzbdmw/colorful-menu.nvim",
     },
-    event = "BufRead",
+    event = "LazyFile",
     config = function()
         local cmp = require 'cmp'
 

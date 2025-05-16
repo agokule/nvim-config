@@ -1,6 +1,6 @@
 return {
     'petertriho/nvim-scrollbar',
-    event = "BufRead",
+    event = "LazyFile",
     config = function()
         local colors = require("tokyonight.colors").setup()
 

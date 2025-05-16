@@ -5,7 +5,7 @@ return {
         "nvim-lua/plenary.nvim",
         "hrsh7th/nvim-cmp",
     },
-    event = "BufRead",
+    event = "LazyFile",
     opts = {
         -- Optionally disable cmp source if using virtual text only
         enable_cmp_source = true,
