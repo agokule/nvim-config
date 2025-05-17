@@ -9,22 +9,22 @@ lazy_event.mappings['User LazyFile'] = lazy_event.mappings.LazyFile
 
 local lazy_file_events = { "BufRead", "BufNewFile", "BufWritePre"}
 
-local done = false
+local done_lazy_file = false
 
-local function load()
-  if done then return end
-  done = true
+local function load_lazy_file()
+  if done_lazy_file then return end
+  done_lazy_file = true
   vim.api.nvim_exec_autocmds("User", { pattern = "LazyFile", modeline = false })
 end
 
 -- schedule wrap so that nested autocmds are executed
 -- and the UI can continue rendering without blocking
-load = vim.schedule_wrap(load)
+load_lazy_file = vim.schedule_wrap(load_lazy_file)
 
 vim.api.nvim_create_autocmd(lazy_file_events, {
   group = vim.api.nvim_create_augroup("lazy_file", { clear = true }),
   callback = function()
-    load()
+    load_lazy_file()
   end,
 })
 
