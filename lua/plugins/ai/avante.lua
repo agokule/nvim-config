@@ -40,7 +40,6 @@ return {
   "yetone/avante.nvim",
   lazy = true,
   version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
-  enabled = vim.g.enable_ai,
   opts = function ()
     return {
       vendors = setup_vendors(),

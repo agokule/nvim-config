@@ -64,11 +64,11 @@ require('lazy-file')
 
 require('lazy').setup({
   { import = 'plugins.essentials' },
-  { import = 'plugins.lsp-debugger', enabled = (not vim.g.vscode) },
+  { import = 'plugins.lsp-debugger', cond = (not vim.g.vscode) },
   { import = 'plugins.code-files' },
-  { import = 'plugins.ai', enabled = (vim.g.enable_ai and not vim.g.vscode) },
-  { import = 'plugins.ui', enabled = (not vim.g.vscode) },
-  { import = 'plugins.git', enabled = (not vim.g.vscode) },
+  { import = 'plugins.ai', cond = (vim.g.enable_ai and not vim.g.vscode) },
+  { import = 'plugins.ui', cond = (not vim.g.vscode) },
+  { import = 'plugins.git', cond = (not vim.g.vscode) },
 }, {})
 
 -- [[ Setting options ]]

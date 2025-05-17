@@ -1,6 +1,5 @@
 return {
     "Exafunction/codeium.nvim",
-    enabled = vim.g.enable_ai,
     dependencies = {
         "nvim-lua/plenary.nvim",
         "hrsh7th/nvim-cmp",
