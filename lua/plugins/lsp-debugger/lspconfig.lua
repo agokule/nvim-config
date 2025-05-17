@@ -70,22 +70,20 @@ return {
         'williamboman/mason-lspconfig.nvim',
         event = "LazyFile",
         dependencies = { 'williamboman/mason.nvim' },
-        opts = {
-            ensure_installed = vim.tbl_keys(servers),
-            handlers = {
-                function(server_name)
-                    vim.lsp.config(server_name, { on_attach = on_attach })
-                    vim.lsp.enable(server_name)
-                end,
-                ["clangd"] = function ()
-                    vim.lsp.config("clangd", {
-                        on_attach = on_attach,
+        config = function()
+            require("mason-lspconfig").setup { ensure_installed = vim.tbl_keys(servers) }
+
+            for server_name, server_config in pairs(servers) do
+                local config = { on_attach = on_attach }
+                vim.lsp.config(server_name, config)
+                if server_name == "clangd" then
+                    vim.lsp.config(server_name, {
                         cmd = { "clangd", "--completion-style=detailed" }
                     })
-                    vim.lsp.enable("clangd")
                 end
-            }
-        }
+                vim.lsp.enable(server_name)
+            end
+        end
     },
     {
         'williamboman/mason.nvim',
