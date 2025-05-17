@@ -4,7 +4,7 @@ return {
         "nvim-lua/plenary.nvim",
         "hrsh7th/nvim-cmp",
     },
-    event = "LazyFile",
+    event = "InsertEnter",
     opts = {
         -- Optionally disable cmp source if using virtual text only
         enable_cmp_source = true,

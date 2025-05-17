@@ -7,6 +7,9 @@ local lazy_event = require('lazy.core.handler.event')
 lazy_event.mappings.LazyFile = { id = "LazyFile", event = "User", pattern = "LazyFile" }
 lazy_event.mappings['User LazyFile'] = lazy_event.mappings.LazyFile
 
+lazy_event.mappings.UIDone = { id = "UIDone", event = "User", pattern = "UIDone" }
+lazy_event.mappings['User UIDone'] = lazy_event.mappings.UIDone
+
 local lazy_file_events = { "BufRead", "BufNewFile", "BufWritePre"}
 
 local done_lazy_file = false
@@ -22,9 +25,16 @@ end
 load_lazy_file = vim.schedule_wrap(load_lazy_file)
 
 vim.api.nvim_create_autocmd(lazy_file_events, {
-  group = vim.api.nvim_create_augroup("lazy_file", { clear = true }),
   callback = function()
     load_lazy_file()
+  end,
+})
+
+vim.api.nvim_create_autocmd("UIEnter", {
+  callback = function()
+    vim.schedule(function()
+      vim.api.nvim_exec_autocmds("User", { pattern = "UIDone", modeline = false })
+    end)
   end,
 })
 
