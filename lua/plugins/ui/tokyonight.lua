@@ -1,7 +1,5 @@
 return {
     "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
     opts = {
         -- your configuration comes here
         -- or leave it empty to use the default settings
@@ -27,6 +25,12 @@ return {
         lualine_bold = false,       -- When `true`, section headers in the lualine theme will be bold
     },
     init = function ()
-        vim.cmd[[colorscheme tokyonight]]
+        vim.api.nvim_create_autocmd("User", {
+            pattern = "UIDone",
+            desc = "Set tokyonight colorscheme",
+            callback = function()
+                vim.cmd[[colorscheme tokyonight]]
+            end
+        })
     end
 }
