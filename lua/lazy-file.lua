@@ -1,5 +1,5 @@
--- Creates the LazyFile
--- This should have the same effect as the LazyFile event in LazyVim
+-- Creates the LazyFile and UIDone events
+-- LazyFile event here should have the same effect as the LazyFile event in LazyVim
 -- It seems most of this code was removed from LazyVim in the following github commit
 -- https://github.com/LazyVim/LazyVim/commit/965a469ca8cb1d58b49c4e5d8b85430e8c6c0a25
 
