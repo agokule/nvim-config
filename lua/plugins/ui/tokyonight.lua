@@ -1,5 +1,6 @@
 return {
     "folke/tokyonight.nvim",
+    -- @class tokyonight.Config
     opts = {
         -- your configuration comes here
         -- or leave it empty to use the default settings

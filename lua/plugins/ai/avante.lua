@@ -25,11 +25,16 @@ local function setup_vendors()
   end
 
   for _, model in ipairs(data.data) do
+    local tools = true
+    if not string.find(model.id, "qwen3") and not string.find(model.id, "qwen2.5") then
+      tools = false
+    end
     vendors[model.id] = {
       __inherited_from = 'openai',
       api_key_name = '',
       endpoint = 'http://127.0.0.1:1234/v1',
       model = model.id,
+      disable_tools = not tools
     }
   end
   vim.print(vendors)
@@ -59,10 +64,8 @@ return {
   keys = {
     { '<leader>aa', function() require('avante.api').ask() end, desc = 'Ask Avante', mode = { 'n', 'v' } },
     { '<leader>ae', function() require('avante.api').edit() end, desc = 'Edit code with Avante', mode = { 'n', 'v' } },
-    { '<leader>ac', function() require('avante.api').chat() end, desc = 'Chat with Avante' },
     { '<leader>af', function() require('avante.api').focus() end, desc = 'Switch sidebar focus avante' },
     { '<leader>ar', function() require('avante.api').refresh() end, desc = 'Refresh avante sidebar' },
-    { '<leader>a?', function() require('avante.api').switch_provider() end, desc = 'Switch avante ai model' },
     { '<leader>as', function() require('avante.api').select_model() end, desc = 'Select avante ai model' },
     { '<leader>at', function() require('avante.api').toggle() end, desc = 'Toggle avante sidebar visibility' },
   },
