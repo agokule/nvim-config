@@ -1,5 +1,5 @@
 local function setup_vendors()
-  local vendors = {}
+  local custom_providers = {}
 
   -- Run the curl command to fetch the list of models
   local handle = io.popen('curl -s http://127.0.0.1:1234/v1/models')
@@ -29,7 +29,7 @@ local function setup_vendors()
     if not string.find(model.id, "qwen3") and not string.find(model.id, "qwen2.5") then
       tools = false
     end
-    vendors[model.id] = {
+    custom_providers[model.id] = {
       __inherited_from = 'openai',
       api_key_name = '',
       endpoint = 'http://127.0.0.1:1234/v1',
@@ -37,8 +37,8 @@ local function setup_vendors()
       disable_tools = not tools
     }
   end
-  vim.print(vendors)
-  return vendors
+  vim.print(custom_providers)
+  return custom_providers
 end
 
 return {
@@ -47,7 +47,7 @@ return {
   version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
   opts = function ()
     return {
-      vendors = setup_vendors(),
+      providers = setup_vendors()
     }
   end,
   cmd = {
