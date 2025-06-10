@@ -5,6 +5,7 @@ return {
         "hrsh7th/nvim-cmp",
     },
     event = "InsertEnter",
+    main = "codeium",
     opts = {
         -- Optionally disable cmp source if using virtual text only
         enable_cmp_source = true,
