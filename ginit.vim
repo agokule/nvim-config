@@ -15,7 +15,7 @@ endfunction
 
 fu! AdjustOpacity(amount)
   if exists("g:neovide")
-    :execute "lua vim.g.neovide_transparency = 0." . a:amount
+    :execute "lua vim.g.neovide_opacity = 0." . a:amount
   else
     :execute "GuiWindowOpacity 0." . a:amount
   end
