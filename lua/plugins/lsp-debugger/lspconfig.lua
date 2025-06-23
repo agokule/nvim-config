@@ -54,6 +54,12 @@ local on_attach = function(_, bufnr)
     end, { desc = 'Format current buffer with LSP' })
 end
 
+vim.api.nvim_create_autocmd('LspAttach', {
+    callback = function(args)
+        local bufnr = args.buf
+        on_attach(nil, bufnr)
+    end
+})
 
 return {
     {
@@ -71,10 +77,10 @@ return {
         event = "LazyFile",
         dependencies = { 'williamboman/mason.nvim' },
         config = function()
-            require("mason-lspconfig").setup { ensure_installed = vim.tbl_keys(servers) }
+            require("mason-lspconfig").setup { ensure_installed = vim.tbl_keys(servers), automatic_enable = true }
 
+            local config = { on_attach = on_attach }
             for server_name, server_config in pairs(servers) do
-                local config = { on_attach = on_attach }
                 vim.lsp.config(server_name, config)
                 if server_name == "clangd" then
                     vim.lsp.config(server_name, {
