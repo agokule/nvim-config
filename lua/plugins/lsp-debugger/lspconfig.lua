@@ -87,7 +87,6 @@ return {
                         cmd = { "clangd", "--completion-style=detailed" }
                     })
                 end
-                vim.lsp.enable(server_name)
             end
         end
     },
