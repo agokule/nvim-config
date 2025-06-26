@@ -12,6 +12,9 @@ return {
         enable_chat = true,
         virtual_text = {
             enabled = true,
+            key_bindings = {
+                accept = "<s-tab>"
+            }
         }
     }
 }
