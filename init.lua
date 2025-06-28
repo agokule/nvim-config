@@ -13,11 +13,12 @@ vim.g.maplocalleader = ' '
 require('local-settings')
 
 if (vim.fn.has('win32')) then
-  vim.env.PATH = vim.env.PATH .. ";C:/cygwin64/bin"
-  -- check if c:/cygwin64/bin exists
-  if (vim.fn.isdirectory('C:/cygwin64/bin') == 0) then
-    vim.notify("C:/cygwin64/bin does not exist", vim.log.levels.WARN)
+  local git = vim.fn.exepath("git")
+  if #git == 0 then
+    vim.notify("Git is required for this on Windows platform")
   end
+  local git_cmdtool_path = vim.fs.joinpath(vim.fs.dirname(vim.fs.dirname(git)), "usr/bin")
+  vim.env.PATH = vim.env.PATH .. ';' .. git_cmdtool_path
 end
 
 -- i don't know how to do this in lua
