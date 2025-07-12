@@ -55,7 +55,6 @@ end
 vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(args)
         local bufnr = args.buf
-        vim.print(args)
         on_attach(nil, bufnr)
     end
 })
@@ -91,7 +90,6 @@ return {
                 vim.lsp.enable(server_name)
                 lspconfig[server_name].setup({})
                 vim.lsp.config(server_name, config)
-                vim.print(vim.lsp.config[server_name])
             end
         end
     },
