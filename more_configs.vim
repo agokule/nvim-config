@@ -148,3 +148,5 @@ noremap <leader>0 :tablast<cr>
 nnoremap H gT
 nnoremap L gt
 
+set path+=**
+
