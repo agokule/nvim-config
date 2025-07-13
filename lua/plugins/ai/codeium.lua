@@ -4,6 +4,7 @@ return {
         "nvim-lua/plenary.nvim",
         "hrsh7th/nvim-cmp",
     },
+    enabled = false,
     event = "InsertEnter",
     main = "codeium",
     opts = function()

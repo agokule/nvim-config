@@ -1,21 +1,19 @@
 local servers = {
-  clangd = {},
-  pylsp = {},
-  html = {
-    filetypes = {
-      'html', 'twig', 'hbs'
-    }
-  },
+    clangd = {},
+    pylsp = {},
+    html = { filetypes = { 'html', 'twig', 'hbs' } },
+    ts_ls = {},
 
-  lua_ls = {
-    Lua = {
-      workspace = {
-        checkThirdParty = true,
-        library = " ${3rd}/luv/library"
-      },
-      telemetry = { enable = false },
+    lua_ls = {
+        Lua = {
+            workspace = {
+                checkThirdParty = true,
+                library = " ${3rd}/luv/library"
+            },
+            telemetry = { enable = false },
+        },
     },
-  },
+
 }
 
 --  This function gets run when an LSP connects to a particular buffer.
@@ -78,15 +76,20 @@ return {
         dependencies = { 'williamboman/mason.nvim' },
         config = function()
             require("mason-lspconfig").setup { ensure_installed = vim.tbl_keys(servers), automatic_enable = true }
+            local lspconfig = require('lspconfig')
 
-            local config = { on_attach = on_attach }
+            local default_config = { on_attach = on_attach }
             for server_name, server_config in pairs(servers) do
-                vim.lsp.config(server_name, config)
+                local config = lspconfig[server_name].config_def.default_config
+                vim.tbl_extend('force', config, default_config)
                 if server_name == "clangd" then
-                    vim.lsp.config(server_name, {
+                    vim.tbl_extend('force', config, {
                         cmd = { "clangd", "--completion-style=detailed" }
                     })
                 end
+                vim.lsp.enable(server_name)
+                lspconfig[server_name].setup({})
+                vim.lsp.config(server_name, config)
             end
         end
     },
