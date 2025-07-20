@@ -50,6 +50,9 @@ let g:mapleader = ","
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
+nnoremap <a-j> :m .1<CR>==
+nnoremap <a-k> :m .-2<CR>==
+
 let g:python3_host_prog = 'py'
 
 " length of an actual \t character:
@@ -147,6 +150,9 @@ noremap <leader>0 :tablast<cr>
 " Go to tabs left and right
 nnoremap H gT
 nnoremap L gt
+
+vnoremap < <gv
+vnoremap > >gv
 
 set path+=**
 
