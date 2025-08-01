@@ -62,6 +62,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy-file')
+require('lspconfig')
 
 require('lazy').setup({
   { import = 'plugins.essentials' },
