@@ -15,7 +15,11 @@ return {
                 Info = { color = colors.info },
                 Hint = { color = colors.hint },
                 Misc = { color = colors.purple },
+                GitAdd = { color = colors.git.add },
+                GitChange = { color = colors.git.change },
+                GitDelete = { color = colors.git.delete }
             }
         })
+        require("scrollbar.handlers.gitsigns").setup()
     end
 }
