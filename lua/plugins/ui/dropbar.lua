@@ -27,55 +27,6 @@ return {
 
               require('mini.files').open(path)
             end,
-            D = function()
-              local path = get_component_path_under_cursor()
-              print('path: ' .. vim.inspect(path))
-              if not path then
-                return
-              end
-
-              local choice = vim.fn.confirm(
-                string.format('Delete %s?', path),
-                '&Yes\n&No\n&Cancel'
-              )
-              if choice > 1 then
-                return
-              end
-
-              vim.fn.delete(path)
-              -- Do something to redraw the menu
-            end,
-            a = function()
-              local path = get_component_path_under_cursor()
-              if not path then
-                return
-              end
-
-              local dir = vim.fs.dirname(path)
-              local target
-              vim.ui.input(
-                { prompt = 'File name: ', completion = 'file' },
-                function(input)
-                  target = input
-                end
-              )
-              if not target then
-                return
-              end
-
-              target = vim.fs.joinpath(dir, target)
-              if vim.endswith(target, '/') then
-                vim.fn.mkdir(target, 'p')
-              else
-                local fd_target = io.open(target, 'w')
-                if not fd_target then
-                  return false
-                end
-                fd_target:write()
-                fd_target:close()
-              end
-              -- Do something to redraw the menu
-            end,
           },
         },
       })
