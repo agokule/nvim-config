@@ -1,3 +1,5 @@
+local cool_color = "#6A71B6"
+
 return {
     "folke/tokyonight.nvim",
     -- @class tokyonight.Config
@@ -11,7 +13,7 @@ return {
         styles = {
             -- Style to be applied to different syntax groups
             -- Value is any valid attr-list value for `:help nvim_set_hl`
-            comments = { italic = true },
+            comments = { italic = true, fg = cool_color},
             keywords = { italic = true },
             functions = {},
             variables = { fg = "#c3c3c3" },
@@ -24,6 +26,9 @@ return {
         hide_inactive_statusline = false, -- Enabling this option, will hide inactive statuslines and replace them with a thin border instead. Should work with the standard **StatusLine** and **LuaLine**.
         dim_inactive = false,       -- dims inactive windows
         lualine_bold = false,       -- When `true`, section headers in the lualine theme will be bold
+        on_colors = function(colors)
+            colors.fg_gutter = cool_color
+        end
     },
     init = function ()
         vim.api.nvim_create_autocmd("User", {
