@@ -38,6 +38,7 @@ local longest_menu_kind_type_len = 13 -- It is TypeParameter
 
 return {
     'hrsh7th/nvim-cmp',
+    cond = false,
     dependencies = {
         -- Adds LSP completion capabilities
         'hrsh7th/cmp-nvim-lsp',
