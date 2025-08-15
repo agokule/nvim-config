@@ -290,7 +290,7 @@ return {
                         name = 'Fullscreen Mode',
                         get = function() return vim.g.neovide_fullscreen end,
                         set = function(state) vim.g.neovide_fullscreen = state end
-                    }):map('<F11>')
+                    }):map('<F11>'):map('<leader>fs')
                 end
             end,
         })
