@@ -7,3 +7,5 @@ vim.g.enable_ai = true
 -- Controls whether lsp progress bar is enabled
 vim.g.lsp_progress = true
 
+vim.g.exrc_file = '.nvim.lua'
+

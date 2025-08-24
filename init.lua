@@ -122,6 +122,25 @@ vim.o.relativenumber = true
 vim.o.foldmethod = 'indent'
 vim.o.foldenable = false
 
+vim.o.ex = true
+
+-- Automatically load the .nvim.lua when I :cd
+vim.api.nvim_create_autocmd('DirChanged', {
+  pattern = { 'window', 'tabpage', 'global', 'auto' },
+  callback = function ()
+    local cwd = vim.fn.getcwd()
+
+    if not vim.fn.filereadable(cwd .. '/' .. vim.g.exrc_file) then
+      return
+    end
+    if type(vim.secure.read(vim.g.exrc_file)) ~= 'string' then
+      return
+    end
+
+    vim.cmd.source(vim.g.exrc_file)
+  end
+})
+
 -- [[ Basic Keymaps ]]
 
 -- Keymaps for better default experience
