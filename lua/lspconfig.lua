@@ -30,5 +30,3 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
 })
 
-vim.lsp.enable({ "lua_ls", "pyright", "clangd", "emmet_language_server", "ts_ls" })
-
