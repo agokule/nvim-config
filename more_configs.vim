@@ -132,8 +132,14 @@ function! ToggleComment()
 endfunction
 
 let g:mapleader = " "
-nnoremap <leader>kc :call ToggleComment()<cr>
-vnoremap <leader>kc :call ToggleComment()<cr>
+
+if !has('nvim')
+    nnoremap <leader>kc :call ToggleComment()<cr>
+    vnoremap <leader>kc :call ToggleComment()<cr>
+else
+    nnoremap <leader>kc gcc
+    vnoremap <leader>kc gc
+endif
 
 " Go to tab by number
 noremap <leader>1 1gt
