@@ -1,13 +1,13 @@
-let s:fontsize = 11
+let s:fontsize = 10
 if exists("g:neovide")
-  set guifont=CaskaydiaMono\ Nerd\ Font:h11
+  set guifont=CaskaydiaCove\ Nerd\ Font:h10
 else
-  set guifont=CaskaydiaMono\ NF\ Semibold:h11
+  set guifont=CaskaydiaCove\ NF\ Semibold:h10
 endif
 function! AdjustFontSize(amount)
   let s:fontsize = s:fontsize+a:amount
   if exists("g:neovide")
-    :execute "set guifont=CaskaydiaMono\\ Nerd\\ Font:h" . s:fontsize
+    :execute "set guifont=CaskaydiaCove\\ Nerd\\ Font:h" . s:fontsize
   else
     :execute "GuiFont! Cascadia\\ Mono:h" . s:fontsize
   endif
