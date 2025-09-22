@@ -32,6 +32,14 @@ return {
           windows = { 'winget install LLVM.LLVM' }
         }
       },
+      {
+        name = "Lazygit",
+        cmd = 'lazygit',
+        install = {
+          windows = { 'winget install JesseDuffield.lazygit'},
+          linux = { 'sudo pacman -S lazygit', 'sudo apt install lazygit' }
+        }
+      }
     },
     auto_check = true
   }
