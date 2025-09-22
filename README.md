@@ -6,16 +6,14 @@ Credits to [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) for the 
 
 ## Features
 
-- Uses codeium and github copliot along with [avante.nvim](https://github.com/yetone/avante.nvim) for amazing AI integration
+- Uses github copliot for amazing AI integration
 - LSP and autocomplete
-- Git integration with gitsigns, git-blame, and neogit
+- Git integration with gitsigns, and lazygit
 - Lualine for status bar
 - Wakatime to track coding time
 - Slightly customized tokyonight for the perfect coding theme
 - [snacks.nvim](https://github.com/folke/snacks.nvim) for tons of quality of life improvements
-- [harpoon](https://github.com/ThePrimeagen/harpoon) for quick file navigation
-- Neo-tree for file explorer
-- [activate.nvim](https://github.com/roobert/activate.nvim) for activating files in neovim
+- Neo-tree, and mini.files for file explorer
 - Debugger for C++ (only for windows)
 - [competitest](https://github.com/xeluxee/competitest.nvim) to make competitive programming easier
 - [code_runner.nvim](https://github.com/CRAG666/code_runner.nvim) for running code in neovim set up for Python, C++, C, and windows batch files
@@ -30,7 +28,7 @@ Run the following commands in powershell:
 
 ```powershell
 cd $env:LOCALAPPDATA
-git clone https://github.com/username121546434/nvim-config.git nvim
+git clone https://github.com/agokule/nvim-config.git nvim
 ```
 
 ### Unix
@@ -38,7 +36,7 @@ git clone https://github.com/username121546434/nvim-config.git nvim
 Run these commands in your terminal:
 ```bash
 cd ~/.config
-git clone https://github.com/username121546434/nvim-config.git nvim
+git clone https://github.com/agokule/nvim-config.git nvim
 ```
 
 ### Other notes
@@ -53,6 +51,7 @@ After that, you can launch neovim with `nvim` and lazy will start installing the
 ## Basic customization
 
 If you want to disable ai plugins, head to line 11 in init.lua (looks like this: `vim.g.enable_ai = true`) and change true to false.
+See `./lua/local-settings.lua` for more options
 
 ## What are these random files for?
 
