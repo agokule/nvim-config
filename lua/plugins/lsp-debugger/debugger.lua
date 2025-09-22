@@ -3,10 +3,6 @@ return {
     dependencies = {
         -- Creates a beautiful debugger UI
         'rcarriga/nvim-dap-ui',
-
-        -- Installs the debug adapters for you
-        'williamboman/mason.nvim',
-
         'nvim-neotest/nvim-nio'
     },
     config = function()
