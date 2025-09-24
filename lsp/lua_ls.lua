@@ -28,6 +28,7 @@ return {
       workspace = {
          checkThirdParty = false,
          library = {
+          -- can just simply use vim.env.RUNTIMEPATH for nvim plugin development
           -- or pull in all of 'runtimepath'. NOTE: this is a lot slower
           library = vim.tbl_filter(function(d)
             return not d:match(vim.fn.stdpath('config') .. '/?a?f?t?e?r?')
