@@ -14,7 +14,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
         -- See `:help K` for why this keymap
         nmap('K', function () vim.lsp.buf.hover({ border = "rounded" }) end, 'Hover Documentation')
-        nmap('<C-k>', function() vim.lsp.buf.signature_help({ border = "rounded" }) end, 'Signature Documentation')
+        nmap('<leader>k', function() vim.lsp.buf.signature_help({ border = "rounded" }) end, 'Signature Documentation')
 
         -- Lesser used LSP functionality
         nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')

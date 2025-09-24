@@ -1,9 +1,6 @@
 return {
     -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter-textobjects',
-    },
     build = ':TSUpdate',
     event = "LazyFile",
     config = function()
@@ -26,7 +23,7 @@ return {
                         init_selection = '<c-space>',
                         node_incremental = '<c-space>',
                         scope_incremental = '<c-s>',
-                        node_decremental = '<M-space>',
+                        node_decremental = '<s-space>',
                     },
                 },
                 textobjects = {
@@ -64,13 +61,7 @@ return {
                         },
                     },
                     swap = {
-                        enable = true,
-                        swap_next = {
-                            ['<leader>sn'] = '@parameter.inner',
-                        },
-                        swap_previous = {
-                            ['<leader>sp'] = '@parameter.inner',
-                        },
+                        enable = false,
                     },
                 },
             }
