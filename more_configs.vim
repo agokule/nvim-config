@@ -154,8 +154,8 @@ noremap <leader>9 9gt
 noremap <leader>0 :tablast<cr>
 
 " Go to tabs left and right
-nnoremap H gT
-nnoremap L gt
+nnoremap <c-s-tab> gT
+nnoremap <c-tab> gt
 
 vnoremap < <gv
 vnoremap > >gv
