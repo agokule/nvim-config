@@ -3,6 +3,9 @@ return {
    lazy = false,
    dependencies = { "MunifTanjim/nui.nvim" },
    opts = {
-      disable_mouse = false
+      disable_mouse = false,
+      disabled_filetypes = {
+         ["dropbar_menu"] = true
+      }
    },
 }
