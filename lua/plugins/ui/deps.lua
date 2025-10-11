@@ -15,21 +15,24 @@ return {
         name = 'Python',
         cmd = 'python',
         install = {
-          windows = { 'winget install Python.Python.3.13' }
+          windows = { 'winget install Python.Python.3.13' },
+          linux = { "sudo pacman -S python" },
         }
       },
       {
         name = 'MinGW',
         cmd = 'gcc',
         install = {
-          windows = { 'winget install BrechtSanders.WinLibs.POSIX.UCRT' }
+          windows = { 'winget install BrechtSanders.WinLibs.POSIX.UCRT' },
+          linux = { 'sudo pacman -S gcc base-devel' },
         }
       },
       {
         name = 'Clangd',
         cmd = 'clangd',
         install = {
-          windows = { 'winget install LLVM.LLVM' }
+          windows = { 'winget install LLVM.LLVM' },
+          linux = { 'sudo pacman -S clang' },
         }
       },
       {
