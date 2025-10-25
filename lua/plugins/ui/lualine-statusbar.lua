@@ -47,6 +47,33 @@ local function get_wakatime()
     return current_time
 end
 
+local function wordcount()
+    -- Check if in visual mode
+    if vim.fn.mode() == "v" or vim.fn.mode() == "V" or vim.fn.mode() == "" then
+        -- If in visual mode, return the selected word count
+        return vim.fn.wordcount().visual_words
+    else
+        -- Otherwise, return the total buffer word count
+        return vim.fn.wordcount().words
+    end
+end
+
+local function get_wordcount()
+    return tostring(wordcount()) .. ' words'
+end
+
+local function get_readingtime()
+    return '  ' .. tostring(math.ceil(wordcount() / 170.0)) .. ' min'
+end
+
+local function get_speakingtime()
+    return ' ' .. tostring(math.ceil(wordcount() / 100.0)) .. ' min'
+end
+
+local function is_markdown()
+    return vim.bo.filetype == "markdown" or vim.bo.filetype == "asciidoc"
+end
+
 return {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
@@ -61,7 +88,12 @@ return {
         sections = {
             lualine_a = { 'mode' },
             lualine_b = { 'branch', 'diff', 'diagnostics' },
-            lualine_c = { 'filename' },
+            lualine_c = {
+                'filename',
+                { get_wordcount, cond = is_markdown },
+                { get_readingtime, cond = is_markdown },
+                { get_speakingtime, cond = is_markdown },
+            },
             lualine_x = {
                 'encoding',
                 'fileformat',
