@@ -174,7 +174,11 @@ vim.keymap.set('n', '<leader>cp', function()
   local current_file_ext = vim.fn.fnamemodify(current_file, ':e')
 
   if current_file_ext == 'cpp' then
-    vim.cmd('e ' .. current_file_name .. '.h')
+    if vim.uv.fs_stat(current_file_name .. '.h') then
+      vim.cmd('e ' .. current_file_name .. '.h')
+    else
+      vim.cmd('e ' .. current_file_name .. '.hpp')
+    end
   elseif current_file_ext == 'h' or current_file_ext == 'hpp' then
     vim.cmd('e ' .. current_file_name .. '.cpp')
   else
