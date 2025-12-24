@@ -253,6 +253,21 @@ vim.api.nvim_create_autocmd("LspProgress", {
   end,
 })
 
+-- taken from https://github.com/LazyVim/LazyVim/discussions/2184#discussioncomment-7841499
+vim.api.nvim_create_autocmd("Filetype", {
+  pattern = { "*" },
+  callback = function()
+    -- vim.opt.formatoptions = vim.opt.formatoptions - "o"
+    if vim.bo["ft"] == "css" then
+      vim.opt_local.formatoptions:remove("r") -- don't enter comment leader on Enter in css files
+    end
+    vim.opt.formatoptions = vim.opt.formatoptions + {
+      o = false, -- Don't continue comments with o and O
+    }
+  end,
+  desc = "Don't continue comments with o and O",
+})
+
 -- temporary fix for https://github.com/neovim/neovim/issues/8587
 -- taken from https://github.com/neovim/neovim/issues/8587#issuecomment-2176399196
 vim.api.nvim_create_user_command("ClearShada", function()
