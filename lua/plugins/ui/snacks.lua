@@ -99,6 +99,7 @@ return {
             enabled = true,
             timeout = 6000,
         },
+        image = { enabled = vim.o.shell == "bash" },
         quickfile = { enabled = true },
         scroll = { enabled = not vim.g.neovide },
         statuscolumn = { enabled = true },
