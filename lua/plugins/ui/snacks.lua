@@ -119,7 +119,8 @@ return {
                 relative = "editor"
             }
         },
-        picker = {}
+        picker = {},
+        rename = { enabled = true },
     },
     keys = {
         { "<leader>z",  function() Snacks.zen() end,                     desc = "Toggle Zen Mode" },
