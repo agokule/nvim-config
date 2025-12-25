@@ -1,3 +1,8 @@
+local use_ampersand = '&'
+if vim.o.shell ~= 'pwsh' then
+    use_ampersand = ''
+end
+
 return {
     "CRAG666/code_runner.nvim",
     config = function()
@@ -22,13 +27,15 @@ return {
                     "cd \"$dir\" &&",
                     "g++ -Wall -static -std=c++17 \"$fileName\"",
                     "-o \"$fileNameWithoutExt\" &&",
-                    "& \"$dir/$fileNameWithoutExt\""
+                    use_ampersand,
+                    "\"$dir/$fileNameWithoutExt\""
                 },
                 c = {
                     "cd \"$dir\" &&",
                     "gcc -Wall -static \"$fileName\"",
                     "-o \"$fileNameWithoutExt\" &&",
-                    "& \"$dir/$fileNameWithoutExt\""
+                    use_ampersand,
+                    "\"$dir/$fileNameWithoutExt\""
                 },
                 dosbatch = { -- *.bat and *.cmd files
                     "cd \"$dir\" &&",
