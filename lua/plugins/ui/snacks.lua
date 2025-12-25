@@ -95,6 +95,7 @@ return {
         },
         indent = { enabled = true },
         input = { enabled = true },
+        gh = { enabled = true },
         notifier = {
             enabled = true,
             timeout = 6000,
@@ -134,6 +135,10 @@ return {
         { "<leader>gB", function() Snacks.gitbrowse() end,               desc = "Git Browse",                  mode = { "n", "v" } },
         { "<leader>gb", function() Snacks.git.blame_line() end,          desc = "Git Blame Line" },
         { "<leader>gf", function() Snacks.lazygit.log_file() end,        desc = "Lazygit Current File History" },
+        { "<leader>gi", function() Snacks.picker.gh_issue() end,         desc = "GitHub Issues (open)" },
+        { "<leader>gI", function() Snacks.picker.gh_issue({ state = "all" }) end, desc = "GitHub Issues (all)" },
+        { "<leader>go", function() Snacks.picker.gh_pr() end, desc = "GitHub Pull Requests (open)" },
+        { "<leader>gO", function() Snacks.picker.gh_pr({ state = "all" }) end, desc = "GitHub Pull Requests (all)" },
         { "<leader>lg", function() Snacks.lazygit() end,                 desc = "Lazygit" },
         { "<leader>lG", function() Snacks.lazygit.log() end,             desc = "Lazygit Log (cwd)" },
         { "<leader>un", function() Snacks.notifier.hide() end,           desc = "Dismiss All Notifications" },
