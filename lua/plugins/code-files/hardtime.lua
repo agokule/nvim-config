@@ -5,7 +5,8 @@ return {
    opts = {
       disable_mouse = false,
       disabled_filetypes = {
-         ["dropbar_menu"] = true
+         ["dropbar_menu"] = true,
+         ["CompetiTest"] = true
       }
    },
 }
