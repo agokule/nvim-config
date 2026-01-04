@@ -235,6 +235,32 @@ vim.keymap.set('n', 'gdl', function() toggle_diagnostic_display("virtual_lines")
 vim.keymap.set('n', 'gdt', function() toggle_diagnostic_display("virtual_text") end, { desc = 'Toggle diagnostic virtual_text' })
 vim.keymap.set('n', 'gdd', function () vim.diagnostic.open_float({ border = "rounded" }) end, { desc = 'Open diagnostic float' })
 
+vim.keymap.set('n', '<leader>ui', function ()
+  local lsps = {
+    "clangd",
+    "emmet_language_server",
+    "lua_ls",
+    "pyright",
+    "ts_ls",
+  }
+  local choices = {}
+  for _, name in ipairs(lsps) do
+    if vim.lsp.is_enabled(name) then
+      table.insert(choices, " " .. name)
+    else
+      table.insert(choices, name)
+    end
+  end
+  vim.ui.select(choices, {
+    prompt = "Select lsp to enabled/disable"
+  }, function (choice, idx)
+      if choice == nil then
+        return
+      end
+      vim.lsp.enable(lsps[idx], not vim.lsp.is_enabled(lsps[idx]))
+  end)
+end)
+
 -- Creates a progress bar for LSP loading
 vim.api.nvim_create_autocmd("LspProgress", {
   ---@param ev {data: {client_id: integer, params: lsp.ProgressParams}}
