@@ -1,12 +1,15 @@
 vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(args)
         local bufnr = args.buf
-        local nmap = function(keys, func, desc)
+        local nmap = function(keys, func, desc, imap)
             if desc then
                 desc = 'LSP: ' .. desc
             end
 
             vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
+            if imap then
+                vim.keymap.set('i', keys, func, { buffer = bufnr, desc = desc })
+            end
         end
 
         nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
@@ -14,7 +17,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
         -- See `:help K` for why this keymap
         nmap('K', function () vim.lsp.buf.hover({ border = "rounded" }) end, 'Hover Documentation')
-        nmap('<leader>k', function() vim.lsp.buf.signature_help({ border = "rounded" }) end, 'Signature Documentation')
+        nmap('<C-k>', function() vim.lsp.buf.signature_help({ border = "rounded" }) end, 'Signature Documentation', true)
 
         -- Lesser used LSP functionality
         nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
