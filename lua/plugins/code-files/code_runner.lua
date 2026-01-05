@@ -47,6 +47,8 @@ return {
     keys = {
         {'<leader>rc', ':RunCode<CR>', noremap = true, silent = false },
         {'<leader>rf', ':RunFile<CR>', noremap = true, silent = false },
+        {'<leader>rF', ':RunFile<CR>"+pa<cr>', noremap = true, silent = false },
+        {'<leader>RF', ':RunFile<CR>"+pa<cr>', noremap = true, silent = false },
         {'<leader>rt', ':RunFile tab<CR>', noremap = true, silent = false },
         {'<leader>rp', ':RunProject<CR>',  noremap = true, silent = false },
         {'<leader>rd', ':RunClose<CR>', noremap = true, silent = false },
