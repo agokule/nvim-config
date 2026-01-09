@@ -1,29 +1,13 @@
 return {
-    -- :h nvim-dap-ui
-    'rcarriga/nvim-dap-ui',
-    dependencies = {
-        "mfussenegger/nvim-dap",
-        "nvim-neotest/nvim-nio"
-    },
-    keys = {
-        -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
-        { '<F7>', function () require('dapui').toggle() end, desc = 'Debug: See last session result.' },
-    },
+    "MironPascalCaseFan/debugmaster.nvim",
+    -- osv is needed if you want to debug neovim lua code. Also can be used 
+    -- as a way to quickly test-drive the plugin without configuring debug adapters 
+    dependencies = { "mfussenegger/nvim-dap", "jbyuki/one-small-step-for-vimkind", },
     config = function()
-        local dap = require 'dap'
-        local dapui = require('dapui')
-        dapui.setup()
-        dap.listeners.before.attach.dapui_config = function()
-            dapui.open()
-        end
-        dap.listeners.before.launch.dapui_config = function()
-            dapui.open()
-        end
-        dap.listeners.before.event_terminated.dapui_config = function()
-            dapui.close()
-        end
-        dap.listeners.before.event_exited.dapui_config = function()
-            dapui.close()
-        end
+        local dm = require("debugmaster")
+        dm.plugins.osv_integration.enabled = true -- needed if you want to debug neovim lua code
     end,
+    keys = {
+        { "<leader>m", function() vim.cmd.Hardtime('toggle') require("debugmaster").mode.toggle() end, mode = { 'n', 'v' }, nowait = true } 
+    }
 }

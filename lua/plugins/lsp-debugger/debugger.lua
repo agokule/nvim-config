@@ -1,8 +1,6 @@
 return {
     'mfussenegger/nvim-dap',
     dependencies = {
-        -- Creates a beautiful debugger UI
-        'rcarriga/nvim-dap-ui',
         'nvim-neotest/nvim-nio'
     },
     config = function()
@@ -10,36 +8,62 @@ return {
         dap.set_exception_breakpoints({ "raised", "uncaught" })
         dap.set_log_level('TRACE')
 
-        require('dap').adapters.cppdbg = {
-            id = 'cppdbg',
-            type = 'executable',
-            command =
-                "OpenDebugAD7.cmd", -- mason should have this installed and in path specifically for neovim
-            options = {
-                detached = false
-            }
-        }
-        require("dap").configurations.cpp = {
-            {
-                name = "Launch file",
-                type = "cppdbg",
-                request = "launch",
-                program = function()
-                    return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-                end,
-                cwd = '${workspaceFolder}',
-                stopAtEntry = false,
-                setupCommands = {
-                    {
-                        text = '-enable-pretty-printing',
-                        description = 'enable pretty printing',
-                        ignoreFailures = false
-                    },
-                },
+        dap.adapters.codelldb = {
+            type = "server",
+            port = "${port}",
+            executable = {
+                command = "codelldb",
+                args = { "--port", "${port}" },
             },
         }
 
-        require('dap').configurations.c = require('dap').configurations.cpp
+        dap.configurations.c = {
+            {
+                name = 'Run executable (Codelldb)',
+                type = 'codelldb',
+                request = 'launch',
+                -- This requires special handling of 'run_last', see
+                -- https://github.com/mfussenegger/nvim-dap/issues/1025#issuecomment-1695852355
+                program = function()
+                    local path = vim.fn.input({
+                        prompt = 'Path to executable: ',
+                        default = vim.fn.getcwd() .. '/',
+                        completion = 'file',
+                    })
+
+                    return (path and path ~= '') and path or dap.ABORT
+                end,
+            },
+            {
+                name = 'Run executable with arguments (Codelldb)',
+                type = 'codelldb',
+                request = 'launch',
+                -- This requires special handling of 'run_last', see
+                -- https://github.com/mfussenegger/nvim-dap/issues/1025#issuecomment-1695852355
+                program = function()
+                    local path = vim.fn.input({
+                        prompt = 'Path to executable: ',
+                        default = vim.fn.getcwd() .. '/',
+                        completion = 'file',
+                    })
+
+                    return (path and path ~= '') and path or dap.ABORT
+                end,
+                args = function()
+                    local args_str = vim.fn.input({
+                        prompt = 'Arguments: ',
+                    })
+                    return vim.split(args_str, ' +')
+                end,
+            },
+            {
+                name = 'Attach to process (Codelldb)',
+                type = 'codelldb',
+                request = 'attach',
+                processId = require('dap.utils').pick_process,
+            },
+        }
+        dap.configurations.cpp = dap.configurations.c
         vim.fn.sign_define('DapBreakpoint', { text = '🔴' })
     end,
     keys = {
