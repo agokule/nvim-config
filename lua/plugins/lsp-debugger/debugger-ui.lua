@@ -8,6 +8,6 @@ return {
         dm.plugins.osv_integration.enabled = true -- needed if you want to debug neovim lua code
     end,
     keys = {
-        { "<leader>m", function() vim.cmd.Hardtime('toggle') require("debugmaster").mode.toggle() end, mode = { 'n', 'v' }, nowait = true } 
+        { "<leader>m", function() vim.cmd.Hardtime('toggle') require("debugmaster").mode.toggle() end, mode = { 'n', 'v' }, nowait = true, desc = "Toggle debug mode" }
     }
 }
