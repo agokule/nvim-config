@@ -19,7 +19,7 @@ return {
         { '<leader>cu',  ':CompetiTest show_ui<CR>', desc = 'Show CompetiTest ui' },
         { '<leader>ca',  ':CompetiTest add_testcase<CR>', desc = 'Add CompetiTest Testcase' },
         { '<leader>ce',  ':CompetiTest edit_testcase<CR>', desc = 'Edit CompetiTest Testcase' },
-        { '<leader>cd',  ':CompetiTest delete_testcase<CR>', desc = 'Edit CompetiTest Testcase' },
+        { '<leader>cd',  ':CompetiTest delete_testcase<CR>', desc = 'Delete CompetiTest Testcase' },
         { '<leader>cs',  ':CompetiTest convert files_to_singlefile', desc = 'Convert multiple testcase files to single one'},
         { '<leader>cm',  ':CompetiTest convert singlefile_to_files', desc = 'Convert single testcase files to multiple ones'},
         { '<leader>crp', ':CompetiTest receive problem<CR>', desc = 'Receive problem (CompetiTest)' },

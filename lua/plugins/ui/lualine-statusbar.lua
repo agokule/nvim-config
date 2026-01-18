@@ -74,6 +74,22 @@ local function is_markdown()
     return vim.bo.filetype == "markdown" or vim.bo.filetype == "asciidoc"
 end
 
+local competitest_line = {
+    filetypes = {'CompetiTest'},
+    sections = {
+        lualine_b = { function()
+                        return '⬆️ ' .. vim.b.competitest_title or 'CompetiTest' .. ' ⬆️ '
+                    end },
+        lualine_y = {'searchcount'},
+        lualine_z = {'location'},
+    },
+    inactive_sections = {
+        lualine_b = { function()
+                        return '⬆️' .. vim.b.competitest_title or 'CompetiTest' .. '⬆️'
+                    end },
+    },
+}
+
 return {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
@@ -85,6 +101,7 @@ return {
             component_separators = '',
             section_separators = '',
         },
+        extensions = {competitest_line},
         sections = {
             lualine_a = { 'mode' },
             lualine_b = { 'branch', 'diff', 'diagnostics' },
