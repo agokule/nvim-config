@@ -6,7 +6,8 @@ return {
       disable_mouse = false,
       disabled_filetypes = {
          ["dropbar_menu"] = true,
-         ["CompetiTest"] = true
+         ["CompetiTest"] = true,
+         ["gitsigns-blame"] = true,
       }
    },
 }
