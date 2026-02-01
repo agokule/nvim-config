@@ -119,6 +119,22 @@ return {
                 },
                 bo = { filetype = "snacks_notif" },
                 relative = "editor"
+            },
+            zen = {
+                enter = true,
+                fixbuf = false,
+                minimal = false,
+                width = 120,
+                height = 0,
+                backdrop = { transparent = false, blend = 40 },
+                keys = { q = false },
+                zindex = 40,
+                wo = {
+                    winhighlight = "NormalFloat:Normal",
+                },
+                w = {
+                    snacks_main = true,
+                },
             }
         },
         picker = {},
