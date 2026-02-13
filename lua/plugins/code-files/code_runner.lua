@@ -3,6 +3,11 @@ if vim.o.shell ~= 'pwsh' then
     use_ampersand = ''
 end
 
+local python_command = 'py'
+if vim.uv.os_uname().sysname == "Linux" then
+    python_command = 'python3'
+end
+
 return {
     "CRAG666/code_runner.nvim",
     config = function()
@@ -13,7 +18,10 @@ return {
                     "javac $fileName &&",
                     "java $fileNameWithoutExt"
                 },
-                python = "cd \"$dir\" && py \"$fileName\"",
+                python = {
+                    "cd \"$dir\" &&",
+                    python_command, "\"$fileName\""
+                },
                 typescript = {
                     "tsc $fileName ; ",
                     "node $fileName",
