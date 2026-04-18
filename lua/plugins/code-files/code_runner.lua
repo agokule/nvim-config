@@ -19,8 +19,8 @@ return {
                     "java $fileNameWithoutExt"
                 },
                 python = {
-                    "cd \"$dir\" &&",
-                    python_command, "\"$fileName\""
+                    "cd", "$dir", "&&",
+                    python_command, "$fileName"
                 },
                 typescript = {
                     "tsc $fileName ; ",
