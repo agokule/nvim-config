@@ -271,13 +271,17 @@ vim.api.nvim_create_autocmd("LspProgress", {
     if not vim.g.lsp_progress then return end
 
     local spinner = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" }
-    vim.notify(vim.lsp.status(), "info", {
-      id = "lsp_progress",
-      title = "LSP Progress",
-      opts = function(notif)
-        notif.icon = ev.data.params.value.kind == "end" and " "
-          or spinner[math.floor(vim.uv.hrtime() / (1e6 * 80)) % #spinner + 1]
-      end,
+    vim.api.nvim_echo({
+        {ev.data.params.value.kind == "end" and " "
+            or spinner[math.floor(vim.uv.hrtime() / (1e6 * 80)) % #spinner + 1] },
+        {vim.lsp.status()}
+      }, true, {
+        kind = 'progress',
+        status = ev.data.params.value.kind == "end" and "success" or "running",
+        percent = ev.data.params.value.percentage or 100,
+        title = 'Loading LSP',
+        id = 'lsp-loading',
+        source = 'lsp-loading'
     })
   end,
 })
