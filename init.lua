@@ -45,6 +45,9 @@ if vim.g.neovide then
   vim.g.neovide_title_background_color = "#1a1b26"
 end
 
+-- needed so that neovide ignores the system theme
+vim.o.background = 'dark'
+
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
