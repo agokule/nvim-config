@@ -167,6 +167,8 @@ vim.keymap.set('n', '<Leader>cfr', ':let @+ = expand("%:p:.")<CR>', { desc = "Ya
 vim.keymap.set('n', '<Leader>cfn', ':let @+ = expand("%:t")<CR>', { desc = "Yank File Name" })
 vim.keymap.set('n', '<Leader>cff', ':let @+ = expand("%:p:h")<CR>', { desc = "Yank File Folder" })
 
+vim.keymap.set('n', '<leader>fc', function() vim.cmd.edit(vim.g.exrc_file) end, { desc = "Edit the EXRC file" })
+
 vim.keymap.set('t', '<esc>', '<C-\\><C-n>', { desc = 'Escape terminal mode' })
 
 vim.keymap.set('i', '<C-BS>', '<C-W>', { desc = 'Delete the previous word in insert mode' })
