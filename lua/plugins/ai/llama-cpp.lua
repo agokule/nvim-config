@@ -15,7 +15,9 @@ return {
 
 	vim.keymap.set('n', '<leader>ucc', function ()
 	    vim.ui.select({ "qwen-1.5b", "qwen-3b", "qwen-7b" }, { prompt = "Llama.cpp AI Auto Complete" }, function (choice)
-		vim.fn.setreg('+', "llama-server --fim-" .. choice .. "-default")
+		if choice then
+		    vim.fn.setreg('+', "llama-server --fim-" .. choice .. "-default")
+		end
 	    end)
 	end, { desc = 'Copy Llama.cpp AI Auto Complete cmd to clipboard' })
     end
