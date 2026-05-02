@@ -1,5 +1,6 @@
 local cool_color = "#6A71B6"
 
+---@type LazySpec
 return {
     "folke/tokyonight.nvim",
     -- @class tokyonight.Config

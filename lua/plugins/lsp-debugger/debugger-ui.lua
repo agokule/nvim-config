@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
     "MironPascalCaseFan/debugmaster.nvim",
     -- osv is needed if you want to debug neovim lua code. Also can be used 

@@ -63,6 +63,7 @@ highlight! link BlinkCmpKindUnit BlinkCmpKindKeyword
 })
 
 -- ---- Blink configuration -----------------------------------------------
+---@type LazySpec
 return {
   'saghen/blink.cmp',
 

@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
     "agokule/taskrunner.nvim",
     opts = {

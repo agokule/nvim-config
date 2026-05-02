@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
     "CopilotC-Nvim/CopilotChat.nvim",
     dependencies = {

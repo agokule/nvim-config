@@ -16,6 +16,7 @@ local function get_component_path_under_cursor()
   return component.data.path
 end
 
+---@type LazySpec
 return {
     'Bekaboo/dropbar.nvim',
     config = function()

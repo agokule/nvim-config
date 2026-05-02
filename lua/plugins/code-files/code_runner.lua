@@ -8,6 +8,7 @@ if vim.uv.os_uname().sysname == "Linux" then
     python_command = 'python3'
 end
 
+---@type LazySpec
 return {
     "CRAG666/code_runner.nvim",
     config = function()

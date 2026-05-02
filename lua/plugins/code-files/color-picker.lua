@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
     "uga-rosa/ccc.nvim",
     main = 'ccc',

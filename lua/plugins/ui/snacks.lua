@@ -6,6 +6,7 @@ else
     superheroyrr_cmd = "python3 " .. vim.fn.stdpath("config") .. "/superheroyrr.py"
 end
 
+---@type LazySpec
 return {
     "folke/snacks.nvim",
     priority = 1000,

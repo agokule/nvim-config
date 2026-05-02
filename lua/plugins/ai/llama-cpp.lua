@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
     'ggml-org/llama.vim',
     init = function ()

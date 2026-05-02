@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
     "xiyaowong/transparent.nvim",
     cond = not vim.g.neovide,

@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
     'RaafatTurki/hex.nvim',
     opts = {},
