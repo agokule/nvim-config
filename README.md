@@ -9,16 +9,18 @@ Credits to [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) for the 
 - Uses github copliot for amazing AI integration
 - LSP and autocomplete
 - Git integration with gitsigns, and lazygit
-- Lualine for status bar
+- Mini.statusline for status bar
 - Wakatime to track coding time
 - Slightly customized tokyonight for the perfect coding theme
 - [snacks.nvim](https://github.com/folke/snacks.nvim) for tons of quality of life improvements
-- Neo-tree, and mini.files for file explorer
-- Debugger for C++ (only for windows)
+- mini.files for file explorer
+- [debugmaster](https://github.com/MironPascalCaseFan/debugmaster.nvim) for debugging support
 - [competitest](https://github.com/xeluxee/competitest.nvim) to make competitive programming easier
-- [code_runner.nvim](https://github.com/CRAG666/code_runner.nvim) for running code in neovim set up for Python, C++, C, and windows batch files
+- [code_runner.nvim](https://github.com/CRAG666/code_runner.nvim) for running code in neovim set up for Python, C++, C, and Windows batch files
 - [nvim-colorizer.lua](https://github.com/catgoose/nvim-colorizer.lua) to highlight colors in neovim
-- Many more! Check `lua/custom/plugins/*.lua` to see all the plugins (there are like 50+ plugins)
+- Many more! Check `lua/custom/plugins/*.lua` to see all the plugins (there are like 40+ plugins)
+- Supports Linux and Windows
+- Neovim on Windows can be a lot slower than on Linux, so I have optimized this to startup in ~500ms even on Windows! (as long as you don't immediately open a file)
 
 ## How to use as your config
 
@@ -41,6 +43,12 @@ git clone https://github.com/agokule/nvim-config.git nvim
 
 ### Other notes
 
+> This serves as a personal config, so I won't be trying to adapt it to work on
+> other people's computers. If you want to have this exact config, it is your
+> responsibility to make it work on your machine, not mine. Secondly, I won't
+> update this README very often. As such, it is subject to becom out of date
+> sometimes.
+
 - You will need to install neovim (obviously)
 - You need to install python (if you don't have it already)
 - In python you need to install OpenCV and Pillow
@@ -59,5 +67,4 @@ See `./lua/local-settings.lua` for more options
 - `ginit.vim` - loaded by neovim-qt and neovide
 - `more_configs.vim` - Old configs which I used back when I used vim, I have been to lazy to make it lua and it serves as the config to load when using neovim embedded/emulated in a different IDE/editor
 - `superheroyrr.mp4` and `superheroyrr.py` - The python will load the video and show the red/black animation on my dashboard
-- `.luarc.json` - I have no idea what this is and I'm afraid that deleting it might break something
 
