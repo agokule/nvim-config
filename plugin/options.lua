@@ -1,9 +1,6 @@
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
--- needed so that neovide ignores the system theme
-vim.o.background = 'dark'
-
 -- Set highlight on search
 vim.o.hlsearch = false
 vim.o.incsearch = true
