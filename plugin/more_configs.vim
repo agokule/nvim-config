@@ -17,7 +17,6 @@ if version >= 700
    set nospell
 endif
 
-set mouse=a
 set number
 set incsearch
 set hlsearch
@@ -30,8 +29,6 @@ endif
 if has('win32')
     au VimLeave * set guicursor=a:ver1-blinkon1
 endif
-
-let g:mapleader = ","
 
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
@@ -70,63 +67,6 @@ set smartindent
 " use language‐specific plugins for indenting (better):
 filetype plugin indent on
 
-let s:comment_map = { 
-    \   "c": '\/\/',
-    \   "cpp": '\/\/',
-    \   "go": '\/\/',
-    \   "java": '\/\/',
-    \   "javascript": '\/\/',
-    \   "lua": '--',
-    \   "scala": '\/\/',
-    \   "php": '\/\/',
-    \   "python": '#',
-    \   "ruby": '#',
-    \   "rust": '\/\/',
-    \   "sh": '#',
-    \   "desktop": '#',
-    \   "fstab": '#',
-    \   "conf": '#',
-    \   "profile": '#',
-    \   "bashrc": '#',
-    \   "bash_profile": '#',
-    \   "mail": '>',
-    \   "eml": '>',
-    \   "bat": 'REM',
-    \   "ahk": ';',
-    \   "vim": '"',
-    \   "tex": '%',
-    \ }
-
-function! ToggleComment()
-    if has_key(s:comment_map, &filetype)
-        let comment_leader = s:comment_map[&filetype]
-        if getline('.') =~ "^\\s*" . comment_leader . " " 
-            " Uncomment the line
-            execute "silent s/^\\(\\s*\\)" . comment_leader . " /\\1/"
-        else 
-            if getline('.') =~ "^\\s*" . comment_leader
-                " Uncomment the line
-                execute "silent s/^\\(\\s*\\)" . comment_leader . "/\\1/"
-            else
-                " Comment the line
-                execute "silent s/^\\(\\s*\\)/\\1" . comment_leader . " /"
-            end
-        end
-    else
-        echo "No comment leader found for filetype"
-    end
-endfunction
-
-let g:mapleader = " "
-
-if !has('nvim')
-    nnoremap <leader>kc :call ToggleComment()<cr>
-    vnoremap <leader>kc :call ToggleComment()<cr>
-else
-    nnoremap <leader>kc gcc
-    vnoremap <leader>kc gc
-endif
-
 " Go to tab by number
 noremap <leader>1 1gt
 noremap <leader>2 2gt
@@ -145,6 +85,4 @@ nnoremap <c-tab> gt
 
 vnoremap < <gv
 vnoremap > >gv
-
-set path+=**
 
