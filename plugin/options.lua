@@ -39,9 +39,6 @@ vim.o.completeopt = 'menuone,noselect,fuzzy'
 
 vim.o.wrap = false
 
--- NOTE: You should make sure your terminal supports this
-vim.o.termguicolors = true
-
 vim.o.relativenumber = true
 
 -- set folds to indent but disable them by default
