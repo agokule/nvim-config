@@ -28,12 +28,13 @@ local function update_wakatime()
     uv.read_start(stdout, function(err, data)
         assert(not err, err)
         if data then
-            current_time = " " .. data:sub(1, #data - 2)
+            current_time = " " .. data:sub(1, #data - 1)
         end
     end)
 end
 
 set_interval(60000, update_wakatime)
+update_wakatime()
 
 local function get_wakatime()
     return " " .. current_time
