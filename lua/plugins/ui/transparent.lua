@@ -2,7 +2,11 @@
 return {
     "xiyaowong/transparent.nvim",
     cond = not vim.g.neovide,
-    opts = {},
+    opts = {
+        on_clear = function ()
+            require('transparent').clear_prefix('MiniStatusline')
+        end
+    },
     cmd = {
         "TransparentEnable",
         "TransparentDisable",
