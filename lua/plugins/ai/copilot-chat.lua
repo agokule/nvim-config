@@ -90,7 +90,7 @@ return {
         chat.setup(opts)
     end,
     keys = {
-        { "<leader>ac", "<cmd>CopilotChat<cr>", desc = "Chat with Copilot" },
+        { "<leader>ag", "<cmd>CopilotChat<cr>", desc = "Chat with Copilot" },
         { "<leader>aS", ":CopilotChatModels<cr>", desc = "Select Copilot model" },
         { "<leader>aE", ":CopilotChatExplain<cr>", desc = "Explain code with Copilot", mode = { "n", "v" } },
         { "<leader>ao", ":CopilotChatOptimize<cr>", desc = "Optimize code with CopilotChat", mode = { "n", "v" } },
