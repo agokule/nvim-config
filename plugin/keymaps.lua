@@ -4,7 +4,11 @@
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
-vim.keymap.set('n', '<leader>tn', ':tabnew term://' .. vim.o.shell .. '<cr>', { desc = "New terminal tab (opens " .. vim.o.shell .. ')' })
+vim.keymap.set('n', '<leader>tn', function ()
+  vim.cmd('tabnew term://' .. vim.o.shell)
+  vim.keymap.set('t', '<esc>', '<C-\\><C-n>', { desc = 'Escape terminal mode', buf = 0 })
+
+end, { desc = "New terminal tab (opens " .. vim.o.shell .. ')' })
 
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -22,8 +26,6 @@ vim.keymap.set('n', '<Leader>cfn', ':let @+ = expand("%:t")<CR>', { desc = "Yank
 vim.keymap.set('n', '<Leader>cff', ':let @+ = expand("%:p:h")<CR>', { desc = "Yank File Folder" })
 
 vim.keymap.set('n', '<leader>fc', function() vim.cmd.edit(vim.g.exrc_file) end, { desc = "Edit the EXRC file" })
-
-vim.keymap.set('t', '<esc>', '<C-\\><C-n>', { desc = 'Escape terminal mode' })
 
 vim.keymap.set('i', '<C-BS>', '<C-W>', { desc = 'Delete the previous word in insert mode' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
