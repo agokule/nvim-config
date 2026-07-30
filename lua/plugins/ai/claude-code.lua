@@ -1,6 +1,11 @@
+---@type LazySpec
 return {
     "coder/claudecode.nvim",
     dependencies = { "folke/snacks.nvim" },
+    opts = {
+        -- TODO: make this work on windows
+        terminal_cmd = "~/.local/bin/claude"
+    },
     config = true,
     -- `cmd` lets lazy.nvim create command stubs that load the plugin on first use,
     -- so `:ClaudeCode` and friends work on a fresh start. Without it, a keys-only
