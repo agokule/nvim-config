@@ -35,6 +35,11 @@ return {
             highlights.LineNr = { fg = '#5ba0c2' }
             highlights.LineNrBelow = { fg = cool_color }
             highlights.LineNrAbove = { fg = cool_color }
+            if vim.o.background == 'dark' then
+                highlights["@variable"] = { fg = '#c3c3c3' }
+            else
+                highlights["@variable"] = { fg = '#525252' }
+            end
         end,
     },
     init = function ()
