@@ -30,8 +30,8 @@ if has('win32')
     au VimLeave * set guicursor=a:ver1-blinkon1
 endif
 
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
+xnoremap J :m '>+1<CR>gv=gv
+xnoremap K :m '<-2<CR>gv=gv
 
 nnoremap <a-j> :m .1<CR>==
 nnoremap <a-k> :m .-2<CR>==
