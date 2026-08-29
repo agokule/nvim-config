@@ -1,10 +1,16 @@
+local terminal_cmd
+if vim.fn.has('win32') == 0 then
+    terminal_cmd = '~/.local/bin/claude'
+else
+    terminal_cmd = 'C:/Users/Atharv/AppData/Local/Microsoft/WinGet/Packages/Anthropic.ClaudeCode_Microsoft.Winget.Source_8wekyb3d8bbwe/claude.exe'
+end
+
 ---@type LazySpec
 return {
     "coder/claudecode.nvim",
     dependencies = { "folke/snacks.nvim" },
     opts = {
-        -- TODO: make this work on windows
-        terminal_cmd = "~/.local/bin/claude"
+        terminal_cmd = terminal_cmd
     },
     config = true,
     -- `cmd` lets lazy.nvim create command stubs that load the plugin on first use,
