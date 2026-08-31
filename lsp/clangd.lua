@@ -1,3 +1,4 @@
+---@type vim.lsp.Config
 return {
   cmd = { "clangd", "--completion-style=detailed" },
   filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda' },
