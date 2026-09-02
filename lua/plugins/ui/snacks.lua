@@ -101,7 +101,12 @@ return {
             enabled = true,
             timeout = 6000,
         },
-        image = { enabled = vim.o.shell == "bash" or vim.o.shell == "zsh" },
+        image = {
+            enabled = vim.o.shell == "bash" or vim.o.shell == "zsh",
+            math = {
+                enabled = false
+            }
+        },
         quickfile = { enabled = true },
         scroll = { enabled = not vim.g.neovide },
         statuscolumn = { enabled = true },
